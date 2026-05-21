@@ -222,23 +222,26 @@ animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filt
 .cta-note-sm{font-size:0.77rem;color:rgba(255,255,255,0.38);margin-top:var(--sp-2);}
 
 /* ===== VALUE PANEL (fixed left, desktop) ===== */
-.value-panel{position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:50;width:230px;background:rgba(5,9,20,0.93);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(59,130,246,0.2);border-radius:18px;padding:18px 14px 14px;box-shadow:0 4px 40px rgba(0,0,0,0.6),0 0 0 1px rgba(139,92,246,0.07),inset 0 1px 0 rgba(255,255,255,0.05);display:flex;flex-direction:column;gap:10px;max-height:calc(100vh - 60px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(59,130,246,0.25) transparent;}
-.value-panel::-webkit-scrollbar{width:3px;}
-.value-panel::-webkit-scrollbar-thumb{background:rgba(59,130,246,0.3);border-radius:2px;}
-.vp-header{text-align:center;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.07);}
-.vp-eyebrow{font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-family:var(--font-mono);margin-bottom:4px;}
+.value-panel{position:fixed;left:16px;top:calc(var(--nav-h,64px) + 12px);bottom:12px;z-index:50;width:252px;background:rgba(5,9,20,0.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(59,130,246,0.25);border-radius:18px;padding:0;box-shadow:0 4px 40px rgba(0,0,0,0.7),0 0 0 1px rgba(139,92,246,0.1),inset 0 1px 0 rgba(255,255,255,0.06);display:flex;flex-direction:column;}
+.value-panel::before{content:'';display:block;height:3px;background:linear-gradient(90deg,#2563eb,#0ea5e9,#8b5cf6);border-radius:18px 18px 0 0;flex-shrink:0;}
+.vp-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding:0 0 4px;scrollbar-width:thin;scrollbar-color:rgba(59,130,246,0.25) transparent;}
+.vp-scroll::-webkit-scrollbar{width:3px;}
+.vp-scroll::-webkit-scrollbar-thumb{background:rgba(59,130,246,0.3);border-radius:2px;}
+.vp-header{text-align:center;padding:12px 14px 10px;border-bottom:1px solid rgba(255,255,255,0.08);flex-shrink:0;}
+.vp-eyebrow{font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.38);font-family:var(--font-mono);margin-bottom:4px;}
 .vp-price{font-size:2rem;font-weight:800;color:#fff;letter-spacing:-0.04em;line-height:1.1;}
-.vp-price sup{font-size:1rem;font-weight:600;color:var(--accent-2);vertical-align:super;line-height:0;}
-.vp-hook{font-size:0.63rem;color:rgba(255,255,255,0.38);margin-top:5px;font-style:italic;}
-.vp-label{font-size:0.58rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-2);font-family:var(--font-mono);margin-bottom:2px;padding-left:4px;}
-.vp-item{display:flex;align-items:flex-start;gap:7px;padding:5px 6px;border-radius:8px;transition:background 0.15s;}
-.vp-item:hover{background:rgba(255,255,255,0.04);}
-.vp-ico{font-size:0.9rem;flex-shrink:0;margin-top:1px;line-height:1;}
-.vp-txt strong{display:block;font-size:0.77rem;font-weight:600;color:rgba(255,255,255,0.88);line-height:1.3;}
-.vp-txt span{font-size:0.66rem;color:rgba(255,255,255,0.35);line-height:1.4;}
-.vp-divider{height:1px;background:rgba(255,255,255,0.07);margin:2px 0;}
-.vp-cta{display:block;text-align:center;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff !important;font-size:0.78rem;font-weight:700;padding:10px;border-radius:10px;text-decoration:none !important;letter-spacing:0.02em;transition:all 0.2s;box-shadow:0 4px 16px rgba(37,99,235,0.35);margin-top:2px;}
-.vp-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,99,235,0.5);}
+.vp-price sup{font-size:1rem;font-weight:700;color:#38bdf8;vertical-align:super;line-height:0;}
+.vp-hook{font-size:0.68rem;color:rgba(255,255,255,0.48);margin-top:4px;font-style:italic;line-height:1.5;}
+.vp-label{font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#38bdf8;font-family:var(--font-mono);padding:6px 14px 2px;}
+.vp-item{display:flex;align-items:flex-start;gap:9px;padding:5px 14px;transition:background 0.15s;cursor:default;}
+.vp-item:hover{background:rgba(255,255,255,0.05);}
+.vp-ico{font-size:1rem;flex-shrink:0;margin-top:1px;line-height:1;}
+.vp-txt strong{display:block;font-size:0.84rem;font-weight:700;color:rgba(255,255,255,0.95);line-height:1.3;}
+.vp-txt span{font-size:0.7rem;color:rgba(255,255,255,0.42);line-height:1.45;}
+.vp-divider{height:1px;background:rgba(255,255,255,0.08);margin:4px 0;}
+.vp-footer{flex-shrink:0;padding:8px 14px 0;}
+.vp-cta{display:block;text-align:center;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff !important;font-size:0.84rem;font-weight:700;padding:11px;border-radius:11px;text-decoration:none !important;letter-spacing:0.03em;transition:all 0.2s;box-shadow:0 4px 20px rgba(37,99,235,0.4);}
+.vp-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,99,235,0.55);}
 
 /* ===== MOBILE TOP TICKER ===== */
 .value-ticker-wrap{display:none;position:fixed;top:var(--nav-h,64px);left:0;right:0;z-index:48;background:rgba(5,9,20,0.96);border-bottom:1px solid rgba(59,130,246,0.18);overflow:hidden;height:34px;align-items:center;}
@@ -282,46 +285,50 @@ animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filt
     <div class="vp-price"><sup>₹</sup>40,000</div>
     <div class="vp-hook">No one else goes this deep at this price.</div>
   </div>
-  <div class="vp-label">What you'll master</div>
-  <div class="vp-item">
-    <span class="vp-ico">⚙️</span>
-    <div class="vp-txt"><strong>DevOps Core</strong><span>Linux · AWS · Azure · Docker · K8s · CI/CD</span></div>
+  <div class="vp-scroll">
+    <div class="vp-label">What you'll master</div>
+    <div class="vp-item">
+      <span class="vp-ico">⚙️</span>
+      <div class="vp-txt"><strong>DevOps Core</strong><span>Linux · AWS · Azure · Docker · K8s · CI/CD</span></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">🔒</span>
+      <div class="vp-txt"><strong>DevSecOps</strong><span>Secure pipelines · IAM · Ansible Vault</span></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">🧠</span>
+      <div class="vp-txt"><strong>AI Concepts</strong><span>LLMs · RAG · MCP · Vector DBs · Embeddings</span></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">🚀</span>
+      <div class="vp-txt"><strong>AIOps</strong><span>AI Agents · Auto-remediation · Incident bots</span></div>
+    </div>
+    <div class="vp-divider"></div>
+    <div class="vp-label">Career support</div>
+    <div class="vp-item">
+      <span class="vp-ico">🎯</span>
+      <div class="vp-txt"><strong>1-on-1 Mock Interviews</strong></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">📄</span>
+      <div class="vp-txt"><strong>Resume Building</strong></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">💼</span>
+      <div class="vp-txt"><strong>LinkedIn Optimization</strong></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">🏆</span>
+      <div class="vp-txt"><strong>Capstone Projects</strong></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">👥</span>
+      <div class="vp-txt"><strong>Group Discussions</strong><span>with industry professionals</span></div>
+    </div>
   </div>
-  <div class="vp-item">
-    <span class="vp-ico">🔒</span>
-    <div class="vp-txt"><strong>DevSecOps</strong><span>Secure pipelines · IAM · Ansible Vault</span></div>
+  <div class="vp-footer">
+    <a class="vp-cta" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now &rarr;</a>
   </div>
-  <div class="vp-item">
-    <span class="vp-ico">🧠</span>
-    <div class="vp-txt"><strong>AI Concepts</strong><span>LLMs · RAG · MCP · Vector DBs · Embeddings</span></div>
-  </div>
-  <div class="vp-item">
-    <span class="vp-ico">🚀</span>
-    <div class="vp-txt"><strong>AIOps</strong><span>AI Agents · Auto-remediation · Incident bots</span></div>
-  </div>
-  <div class="vp-divider"></div>
-  <div class="vp-label">Career support</div>
-  <div class="vp-item">
-    <span class="vp-ico">🎯</span>
-    <div class="vp-txt"><strong>1-on-1 Mock Interviews</strong></div>
-  </div>
-  <div class="vp-item">
-    <span class="vp-ico">📄</span>
-    <div class="vp-txt"><strong>Resume Building</strong></div>
-  </div>
-  <div class="vp-item">
-    <span class="vp-ico">💼</span>
-    <div class="vp-txt"><strong>LinkedIn Optimization</strong></div>
-  </div>
-  <div class="vp-item">
-    <span class="vp-ico">🏆</span>
-    <div class="vp-txt"><strong>Capstone Projects</strong></div>
-  </div>
-  <div class="vp-item">
-    <span class="vp-ico">👥</span>
-    <div class="vp-txt"><strong>Group Discussions</strong><span>with industry professionals</span></div>
-  </div>
-  <a class="vp-cta" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now &rarr;</a>
 </aside>
 
 <!-- MOBILE TICKER (scrolls below nav on small screens) -->
