@@ -263,8 +263,55 @@ animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filt
   body{padding-bottom:64px;}
 }
 
+/* ===== PANEL-AWARE LAYOUT (desktop only) ===== */
+@media(min-width:1101px){
+  main{padding-left:275px;padding-right:275px;}
+  /* Re-expand full-bleed sections back to viewport width */
+  .home-hero,.enroll-section{margin-left:-275px;margin-right:-275px;}
+  .home-hero .hero__content{padding-left:300px !important;padding-right:300px !important;}
+  .enroll-section > .container{max-width:calc(100vw - 590px);}
+  /* Stats bar is full-width — re-expand and pad content inward */
+  .stats-bar{margin-left:-275px;margin-right:-275px;padding-left:310px;padding-right:310px;}
+}
+
+/* ===== SCHEDULE PANEL (fixed right, desktop) ===== */
+.schedule-panel{position:fixed;right:16px;top:calc(var(--nav-h,64px) + 12px);bottom:12px;z-index:50;width:252px;background:rgba(5,9,20,0.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(16,185,129,0.22);border-radius:18px;padding:0;box-shadow:0 4px 40px rgba(0,0,0,0.7),0 0 0 1px rgba(16,185,129,0.08),inset 0 1px 0 rgba(255,255,255,0.06);display:flex;flex-direction:column;}
+.schedule-panel::before{content:'';display:block;height:3px;background:linear-gradient(90deg,#10b981,#34d399,#a78bfa);border-radius:18px 18px 0 0;flex-shrink:0;}
+.sp-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:0;padding:0 0 4px;scrollbar-width:thin;scrollbar-color:rgba(16,185,129,0.25) transparent;}
+.sp-scroll::-webkit-scrollbar{width:3px;}
+.sp-scroll::-webkit-scrollbar-thumb{background:rgba(16,185,129,0.3);border-radius:2px;}
+.sp-header{text-align:center;padding:12px 14px 10px;border-bottom:1px solid rgba(255,255,255,0.08);flex-shrink:0;}
+.sp-eyebrow{font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.38);font-family:var(--font-mono);margin-bottom:4px;}
+.sp-title{font-size:1.05rem;font-weight:800;color:#fff;line-height:1.25;letter-spacing:-0.02em;}
+.sp-title-accent{background:linear-gradient(90deg,#34d399,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.sp-timezone{display:inline-flex;align-items:center;gap:5px;font-size:0.6rem;color:rgba(255,255,255,0.35);margin-top:5px;font-family:var(--font-mono);background:rgba(255,255,255,0.04);padding:3px 10px;border-radius:var(--r-full);}
+.sp-session{padding:10px 14px;}
+.sp-session + .sp-session{border-top:1px solid rgba(255,255,255,0.06);}
+.sp-session-badge{display:inline-flex;align-items:center;gap:5px;font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:var(--r-full);margin-bottom:7px;}
+.sp-session--morning .sp-session-badge{background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.25);}
+.sp-session--aiops .sp-session-badge{background:rgba(139,92,246,0.15);color:#a78bfa;border:1px solid rgba(139,92,246,0.25);}
+.sp-live-dot{width:5px;height:5px;background:#34d399;border-radius:50%;box-shadow:0 0 5px #34d399;display:inline-block;animation:sp-blink 1.8s ease-in-out infinite;}
+.sp-ai-dot{width:5px;height:5px;background:#a78bfa;border-radius:50%;box-shadow:0 0 5px #a78bfa;display:inline-block;animation:sp-blink 1.8s ease-in-out infinite;}
+@keyframes sp-blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.sp-session-days{font-size:0.78rem;font-weight:700;color:rgba(255,255,255,0.88);margin-bottom:2px;}
+.sp-session-time{font-size:1.1rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:5px;font-family:var(--font-mono);}
+.sp-session--morning .sp-session-time{color:#34d399;}
+.sp-session--aiops .sp-session-time{color:#a78bfa;}
+.sp-session-desc{font-size:0.7rem;color:rgba(255,255,255,0.45);line-height:1.55;}
+.sp-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px;}
+.sp-tag{font-size:0.58rem;font-weight:600;padding:2px 7px;border-radius:5px;background:rgba(139,92,246,0.1);color:rgba(167,139,250,0.8);border:1px solid rgba(139,92,246,0.2);}
+.sp-commit{padding:8px 14px;border-top:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;gap:7px;}
+.sp-commit-row{display:flex;align-items:flex-start;gap:8px;}
+.sp-ico{font-size:0.9rem;flex-shrink:0;line-height:1.3;}
+.sp-txt strong{display:block;font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.88);line-height:1.2;}
+.sp-txt span{font-size:0.67rem;color:rgba(255,255,255,0.4);}
+.sp-footer{flex-shrink:0;padding:8px 14px 10px;border-top:1px solid rgba(255,255,255,0.06);}
+.sp-cta{display:block;text-align:center;background:linear-gradient(135deg,#059669,#10b981);color:#fff !important;font-size:0.84rem;font-weight:700;padding:11px;border-radius:11px;text-decoration:none !important;letter-spacing:0.03em;transition:all 0.2s;box-shadow:0 4px 20px rgba(16,185,129,0.28);}
+.sp-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(16,185,129,0.42);}
+@media(max-width:1100px){.schedule-panel{display:none;}}
+
 @media print{
-  .nav,.scroll-progress,.nav__mobile,.orb,.btt,.noise,.value-panel,.value-ticker-wrap,.value-bottom-bar{display:none !important;}
+  .nav,.scroll-progress,.nav__mobile,.orb,.btt,.noise,.value-panel,.schedule-panel,.value-ticker-wrap,.value-bottom-bar{display:none !important;}
   .reveal{opacity:1;transform:none;}
   body{background:#fff;color:#000;}
 }
@@ -328,6 +375,51 @@ animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filt
   </div>
   <div class="vp-footer">
     <a class="vp-cta" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now &rarr;</a>
+  </div>
+</aside>
+
+<!-- SCHEDULE PANEL (fixed right, desktop) -->
+<aside class="schedule-panel" aria-label="Course schedule">
+  <div class="sp-header">
+    <div class="sp-eyebrow">Live Online Sessions</div>
+    <div class="sp-title">Your Daily<br><span class="sp-title-accent">Rhythm</span></div>
+    <div class="sp-timezone">&#127759; All timings IST</div>
+  </div>
+  <div class="sp-scroll">
+    <div class="sp-session sp-session--morning">
+      <div class="sp-session-badge"><span class="sp-live-dot"></span>&nbsp;Live Training</div>
+      <div class="sp-session-days">Monday - Friday</div>
+      <div class="sp-session-time">8:00 - 10:00 AM</div>
+      <div class="sp-session-desc">Instructor-led live sessions. Code. Build. Deploy. Ask anything.</div>
+    </div>
+    <div class="sp-session sp-session--aiops">
+      <div class="sp-session-badge"><span class="sp-ai-dot"></span>&nbsp;AIOps Club</div>
+      <div class="sp-session-days">Every Evening</div>
+      <div class="sp-session-time">10:00 - 11:00 PM</div>
+      <div class="sp-session-desc">Stuck on something? Bring it here. Troubleshoot blockers, deep-dive into AI topics &amp; discuss the curriculum with peers.</div>
+      <div class="sp-tags">
+        <span class="sp-tag">Troubleshooting</span>
+        <span class="sp-tag">AI Curriculum</span>
+        <span class="sp-tag">Peer Discussions</span>
+      </div>
+    </div>
+    <div class="sp-commit">
+      <div class="sp-commit-row">
+        <span class="sp-ico">&#9728;&#65039;</span>
+        <div class="sp-txt"><strong>10 hrs / week</strong><span>Morning sessions Mon-Fri</span></div>
+      </div>
+      <div class="sp-commit-row">
+        <span class="sp-ico">&#127769;</span>
+        <div class="sp-txt"><strong>7 hrs / week</strong><span>AIOps Club every evening</span></div>
+      </div>
+      <div class="sp-commit-row">
+        <span class="sp-ico">&#128170;</span>
+        <div class="sp-txt"><strong>90 Days Total</strong><span>DevOps + AI for DevOps</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sp-footer">
+    <a class="sp-cta" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Reserve My Seat &rarr;</a>
   </div>
 </aside>
 

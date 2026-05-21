@@ -66,8 +66,93 @@
 .pricing-batch{display:inline-flex;align-items:center;gap:8px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.25);color:#fbbf24;font-size:0.82rem;font-weight:600;padding:10px 22px;border-radius:var(--r-full);margin:var(--sp-3) 0;}
 .cta-note-sm{font-size:0.77rem;color:rgba(255,255,255,0.38);margin-top:var(--sp-2);}
 
+/* ===== VALUE PANEL (fixed left, desktop) ===== */
+.value-panel{position:fixed;left:16px;top:calc(var(--nav-h,64px) + 12px);bottom:12px;z-index:50;width:252px;background:rgba(5,9,20,0.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(59,130,246,0.25);border-radius:18px;padding:0;box-shadow:0 4px 40px rgba(0,0,0,0.7),0 0 0 1px rgba(139,92,246,0.1),inset 0 1px 0 rgba(255,255,255,0.06);display:flex;flex-direction:column;}
+.value-panel::before{content:'';display:block;height:3px;background:linear-gradient(90deg,#2563eb,#0ea5e9,#8b5cf6);border-radius:18px 18px 0 0;flex-shrink:0;}
+.vp-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding:0 0 4px;scrollbar-width:thin;scrollbar-color:rgba(59,130,246,0.25) transparent;}
+.vp-scroll::-webkit-scrollbar{width:3px;}
+.vp-scroll::-webkit-scrollbar-thumb{background:rgba(59,130,246,0.3);border-radius:2px;}
+.vp-header{text-align:center;padding:12px 14px 10px;border-bottom:1px solid rgba(255,255,255,0.08);flex-shrink:0;}
+.vp-eyebrow{font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.38);font-family:var(--font-mono);margin-bottom:4px;}
+.vp-price{font-size:2rem;font-weight:800;color:#fff;letter-spacing:-0.04em;line-height:1.1;}
+.vp-price sup{font-size:1rem;font-weight:700;color:#38bdf8;vertical-align:super;line-height:0;}
+.vp-hook{font-size:0.68rem;color:rgba(255,255,255,0.48);margin-top:4px;font-style:italic;line-height:1.5;}
+.vp-label{font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#38bdf8;font-family:var(--font-mono);padding:6px 14px 2px;}
+.vp-item{display:flex;align-items:flex-start;gap:9px;padding:5px 14px;transition:background 0.15s;cursor:default;}
+.vp-item:hover{background:rgba(255,255,255,0.05);}
+.vp-ico{font-size:1rem;flex-shrink:0;margin-top:1px;line-height:1;}
+.vp-txt strong{display:block;font-size:0.84rem;font-weight:700;color:rgba(255,255,255,0.95);line-height:1.3;}
+.vp-txt span{font-size:0.7rem;color:rgba(255,255,255,0.42);line-height:1.45;}
+.vp-divider{height:1px;background:rgba(255,255,255,0.08);margin:4px 0;}
+.vp-footer{flex-shrink:0;padding:8px 14px 0;}
+.vp-cta{display:block;text-align:center;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff !important;font-size:0.84rem;font-weight:700;padding:11px;border-radius:11px;text-decoration:none !important;letter-spacing:0.03em;transition:all 0.2s;box-shadow:0 4px 20px rgba(37,99,235,0.4);}
+.vp-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,99,235,0.55);}
+/* ===== MOBILE TOP TICKER ===== */
+.value-ticker-wrap{display:none;position:fixed;top:var(--nav-h,64px);left:0;right:0;z-index:48;background:rgba(5,9,20,0.96);border-bottom:1px solid rgba(59,130,246,0.18);overflow:hidden;height:34px;align-items:center;}
+.value-ticker{display:inline-flex;align-items:center;white-space:nowrap;animation:ticker-scroll 36s linear infinite;}
+@keyframes ticker-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.value-ticker .vt-item{font-size:0.7rem;color:rgba(255,255,255,0.65);padding:0 8px;font-weight:500;}
+.value-ticker .vt-sep{color:rgba(59,130,246,0.5);padding:0 2px;font-weight:700;}
+/* ===== MOBILE BOTTOM BAR ===== */
+.value-bottom-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:48;background:rgba(5,9,20,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(59,130,246,0.18);padding:10px 16px;align-items:center;justify-content:space-between;gap:10px;}
+.vbb-info strong{display:block;font-size:0.88rem;font-weight:700;color:#fff;}
+.vbb-info span{font-size:0.7rem;color:rgba(255,255,255,0.45);}
+.vbb-btn{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff !important;font-size:0.8rem;font-weight:700;padding:10px 18px;border-radius:10px;text-decoration:none !important;white-space:nowrap;flex-shrink:0;box-shadow:0 4px 16px rgba(37,99,235,0.4);}
+/* ===== SCHEDULE PANEL (fixed right, desktop) ===== */
+.schedule-panel{position:fixed;right:16px;top:calc(var(--nav-h,64px) + 12px);bottom:12px;z-index:50;width:252px;background:rgba(5,9,20,0.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(16,185,129,0.22);border-radius:18px;padding:0;box-shadow:0 4px 40px rgba(0,0,0,0.7),0 0 0 1px rgba(16,185,129,0.08),inset 0 1px 0 rgba(255,255,255,0.06);display:flex;flex-direction:column;}
+.schedule-panel::before{content:'';display:block;height:3px;background:linear-gradient(90deg,#10b981,#34d399,#a78bfa);border-radius:18px 18px 0 0;flex-shrink:0;}
+.sp-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:0;padding:0 0 4px;scrollbar-width:thin;scrollbar-color:rgba(16,185,129,0.25) transparent;}
+.sp-scroll::-webkit-scrollbar{width:3px;}
+.sp-scroll::-webkit-scrollbar-thumb{background:rgba(16,185,129,0.3);border-radius:2px;}
+.sp-header{text-align:center;padding:12px 14px 10px;border-bottom:1px solid rgba(255,255,255,0.08);flex-shrink:0;}
+.sp-eyebrow{font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.38);font-family:var(--font-mono);margin-bottom:4px;}
+.sp-title{font-size:1.05rem;font-weight:800;color:#fff;line-height:1.25;letter-spacing:-0.02em;}
+.sp-title-accent{background:linear-gradient(90deg,#34d399,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.sp-timezone{display:inline-flex;align-items:center;gap:5px;font-size:0.6rem;color:rgba(255,255,255,0.35);margin-top:5px;font-family:var(--font-mono);background:rgba(255,255,255,0.04);padding:3px 10px;border-radius:var(--r-full);}
+.sp-session{padding:10px 14px;}
+.sp-session + .sp-session{border-top:1px solid rgba(255,255,255,0.06);}
+.sp-session-badge{display:inline-flex;align-items:center;gap:5px;font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:var(--r-full);margin-bottom:7px;}
+.sp-session--morning .sp-session-badge{background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.25);}
+.sp-session--aiops .sp-session-badge{background:rgba(139,92,246,0.15);color:#a78bfa;border:1px solid rgba(139,92,246,0.25);}
+.sp-live-dot{width:5px;height:5px;background:#34d399;border-radius:50%;box-shadow:0 0 5px #34d399;display:inline-block;animation:sp-blink 1.8s ease-in-out infinite;}
+.sp-ai-dot{width:5px;height:5px;background:#a78bfa;border-radius:50%;box-shadow:0 0 5px #a78bfa;display:inline-block;animation:sp-blink 1.8s ease-in-out infinite;}
+@keyframes sp-blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.sp-session-days{font-size:0.78rem;font-weight:700;color:rgba(255,255,255,0.88);margin-bottom:2px;}
+.sp-session-time{font-size:1.1rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:5px;font-family:var(--font-mono);}
+.sp-session--morning .sp-session-time{color:#34d399;}
+.sp-session--aiops .sp-session-time{color:#a78bfa;}
+.sp-session-desc{font-size:0.7rem;color:rgba(255,255,255,0.45);line-height:1.55;}
+.sp-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px;}
+.sp-tag{font-size:0.58rem;font-weight:600;padding:2px 7px;border-radius:5px;background:rgba(139,92,246,0.1);color:rgba(167,139,250,0.8);border:1px solid rgba(139,92,246,0.2);}
+.sp-commit{padding:8px 14px;border-top:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;gap:7px;}
+.sp-commit-row{display:flex;align-items:flex-start;gap:8px;}
+.sp-ico{font-size:0.9rem;flex-shrink:0;line-height:1.3;}
+.sp-txt strong{display:block;font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.88);line-height:1.2;}
+.sp-txt span{font-size:0.67rem;color:rgba(255,255,255,0.4);}
+.sp-footer{flex-shrink:0;padding:8px 14px 10px;border-top:1px solid rgba(255,255,255,0.06);}
+.sp-cta{display:block;text-align:center;background:linear-gradient(135deg,#059669,#10b981);color:#fff !important;font-size:0.84rem;font-weight:700;padding:11px;border-radius:11px;text-decoration:none !important;letter-spacing:0.03em;transition:all 0.2s;box-shadow:0 4px 20px rgba(16,185,129,0.28);}
+.sp-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(16,185,129,0.42);}
+@media(max-width:1100px){
+  .value-panel{display:none;}
+  .schedule-panel{display:none;}
+  .value-ticker-wrap{display:flex;}
+  .value-bottom-bar{display:flex;}
+  body{padding-bottom:64px;}
+}
+
+/* ===== PANEL-AWARE LAYOUT (desktop only) ===== */
+@media(min-width:1101px){
+  main{padding-left:275px;padding-right:275px;}
+  /* Re-expand full-bleed sections */
+  .syl-hero,.enroll-section{margin-left:-275px;margin-right:-275px;}
+  .syl-hero{padding-left:310px;padding-right:310px;}
+  .enroll-section > .container{max-width:calc(100vw - 590px);}
+  /* Stats bar */
+  .stats-bar{margin-left:-275px;margin-right:-275px;padding-left:310px;padding-right:310px;}
+}
+
 @media print{
-  .nav,.scroll-progress,.nav__mobile,.orb,.btt,.noise{display:none !important;}
+  .nav,.scroll-progress,.nav__mobile,.orb,.btt,.noise,.value-panel,.schedule-panel,.value-ticker-wrap,.value-bottom-bar{display:none !important;}
   .reveal{opacity:1;transform:none;}
   body{background:#fff;color:#000;}
 }
@@ -80,6 +165,123 @@
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
 <div class="scroll-progress" role="progressbar" aria-label="Page scroll progress"></div>
+
+<!-- VALUE PANEL (fixed left, desktop) -->
+<aside class="value-panel" aria-label="Course value at &#8377;40,000">
+  <div class="vp-header">
+    <div class="vp-eyebrow">All this for just</div>
+    <div class="vp-price"><sup>&#8377;</sup>40,000</div>
+    <div class="vp-hook">No one else goes this deep at this price.</div>
+  </div>
+  <div class="vp-scroll">
+    <div class="vp-label">What you'll master</div>
+    <div class="vp-item">
+      <span class="vp-ico">&#9881;&#65039;</span>
+      <div class="vp-txt"><strong>DevOps Core</strong><span>Linux &middot; AWS &middot; Azure &middot; Docker &middot; K8s &middot; CI/CD</span></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">&#128274;</span>
+      <div class="vp-txt"><strong>DevSecOps</strong><span>Secure pipelines &middot; IAM &middot; Ansible Vault</span></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">&#129504;</span>
+      <div class="vp-txt"><strong>AI Concepts</strong><span>LLMs &middot; RAG &middot; MCP &middot; Vector DBs &middot; Embeddings</span></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">&#128640;</span>
+      <div class="vp-txt"><strong>AIOps</strong><span>AI Agents &middot; Auto-remediation &middot; Incident bots</span></div>
+    </div>
+    <div class="vp-divider"></div>
+    <div class="vp-label">Career support</div>
+    <div class="vp-item">
+      <span class="vp-ico">&#127919;</span>
+      <div class="vp-txt"><strong>1-on-1 Mock Interviews</strong></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">&#128196;</span>
+      <div class="vp-txt"><strong>Resume Building</strong></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">&#128188;</span>
+      <div class="vp-txt"><strong>LinkedIn Optimization</strong></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">&#127942;</span>
+      <div class="vp-txt"><strong>Capstone Projects</strong></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">&#128101;</span>
+      <div class="vp-txt"><strong>Group Discussions</strong><span>with industry professionals</span></div>
+    </div>
+  </div>
+  <div class="vp-footer">
+    <a class="vp-cta" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now &rarr;</a>
+  </div>
+</aside>
+
+<!-- SCHEDULE PANEL (fixed right, desktop) -->
+<aside class="schedule-panel" aria-label="Course schedule">
+  <div class="sp-header">
+    <div class="sp-eyebrow">Live Online Sessions</div>
+    <div class="sp-title">Your Daily<br><span class="sp-title-accent">Rhythm</span></div>
+    <div class="sp-timezone">&#127759; All timings IST</div>
+  </div>
+  <div class="sp-scroll">
+    <div class="sp-session sp-session--morning">
+      <div class="sp-session-badge"><span class="sp-live-dot"></span>&nbsp;Live Training</div>
+      <div class="sp-session-days">Monday - Friday</div>
+      <div class="sp-session-time">8:00 - 10:00 AM</div>
+      <div class="sp-session-desc">Instructor-led live sessions. Code. Build. Deploy. Ask anything.</div>
+    </div>
+    <div class="sp-session sp-session--aiops">
+      <div class="sp-session-badge"><span class="sp-ai-dot"></span>&nbsp;AIOps Club</div>
+      <div class="sp-session-days">Every Evening</div>
+      <div class="sp-session-time">10:00 - 11:00 PM</div>
+      <div class="sp-session-desc">Stuck on something? Bring it here. Troubleshoot blockers, deep-dive into AI topics &amp; discuss the curriculum with peers.</div>
+      <div class="sp-tags">
+        <span class="sp-tag">Troubleshooting</span>
+        <span class="sp-tag">AI Curriculum</span>
+        <span class="sp-tag">Peer Discussions</span>
+      </div>
+    </div>
+    <div class="sp-commit">
+      <div class="sp-commit-row">
+        <span class="sp-ico">&#9728;&#65039;</span>
+        <div class="sp-txt"><strong>10 hrs / week</strong><span>Morning sessions Mon-Fri</span></div>
+      </div>
+      <div class="sp-commit-row">
+        <span class="sp-ico">&#127769;</span>
+        <div class="sp-txt"><strong>7 hrs / week</strong><span>AIOps Club every evening</span></div>
+      </div>
+      <div class="sp-commit-row">
+        <span class="sp-ico">&#128170;</span>
+        <div class="sp-txt"><strong>90 Days Total</strong><span>DevOps + AI for DevOps</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sp-footer">
+    <a class="sp-cta" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Reserve My Seat &rarr;</a>
+  </div>
+</aside>
+
+<!-- MOBILE TICKER -->
+<div class="value-ticker-wrap" aria-hidden="true">
+  <div class="value-ticker">
+    <span class="vt-item">&#9881;&#65039; DevOps Core</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#128274; DevSecOps</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#129504; AI Concepts</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#128640; AIOps</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#127919; 1-on-1 Mock Interviews</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#128196; Resume Building</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#128188; LinkedIn Optimization</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#127942; Capstone Projects</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#128101; Group Discussions with Industry Pros</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#9881;&#65039; DevOps Core</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#128274; DevSecOps</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#129504; AI Concepts</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#128640; AIOps</span><span class="vt-sep">&middot;</span>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav class="nav" role="navigation" aria-label="Main navigation">
@@ -988,6 +1190,15 @@
   <div class="footer__email"><a href="mailto:community@careerbytecode.com">community@careerbytecode.com</a></div>
   <div class="footer__copy">&copy; 2025 CareerByteCode. All rights reserved.</div>
 </footer>
+
+<!-- MOBILE BOTTOM ENROLL BAR -->
+<div class="value-bottom-bar" aria-label="Enroll now">
+  <div class="vbb-info">
+    <strong>&#8377;40,000 &middot; Everything included</strong>
+    <span>DevOps + AI + Career Support</span>
+  </div>
+  <a class="vbb-btn" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now &rarr;</a>
+</div>
 
 <button class="btt" aria-label="Back to top" title="Back to top">&#x2191;</button>
 
