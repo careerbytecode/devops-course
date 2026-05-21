@@ -221,8 +221,47 @@ animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filt
 .cta-check-item .chk{color:#34d399;font-weight:700;}
 .cta-note-sm{font-size:0.77rem;color:rgba(255,255,255,0.38);margin-top:var(--sp-2);}
 
+/* ===== VALUE PANEL (fixed left, desktop) ===== */
+.value-panel{position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:50;width:230px;background:rgba(5,9,20,0.93);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(59,130,246,0.2);border-radius:18px;padding:18px 14px 14px;box-shadow:0 4px 40px rgba(0,0,0,0.6),0 0 0 1px rgba(139,92,246,0.07),inset 0 1px 0 rgba(255,255,255,0.05);display:flex;flex-direction:column;gap:10px;max-height:calc(100vh - 60px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(59,130,246,0.25) transparent;}
+.value-panel::-webkit-scrollbar{width:3px;}
+.value-panel::-webkit-scrollbar-thumb{background:rgba(59,130,246,0.3);border-radius:2px;}
+.vp-header{text-align:center;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.07);}
+.vp-eyebrow{font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-family:var(--font-mono);margin-bottom:4px;}
+.vp-price{font-size:2rem;font-weight:800;color:#fff;letter-spacing:-0.04em;line-height:1.1;}
+.vp-price sup{font-size:1rem;font-weight:600;color:var(--accent-2);vertical-align:super;line-height:0;}
+.vp-hook{font-size:0.63rem;color:rgba(255,255,255,0.38);margin-top:5px;font-style:italic;}
+.vp-label{font-size:0.58rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-2);font-family:var(--font-mono);margin-bottom:2px;padding-left:4px;}
+.vp-item{display:flex;align-items:flex-start;gap:7px;padding:5px 6px;border-radius:8px;transition:background 0.15s;}
+.vp-item:hover{background:rgba(255,255,255,0.04);}
+.vp-ico{font-size:0.9rem;flex-shrink:0;margin-top:1px;line-height:1;}
+.vp-txt strong{display:block;font-size:0.77rem;font-weight:600;color:rgba(255,255,255,0.88);line-height:1.3;}
+.vp-txt span{font-size:0.66rem;color:rgba(255,255,255,0.35);line-height:1.4;}
+.vp-divider{height:1px;background:rgba(255,255,255,0.07);margin:2px 0;}
+.vp-cta{display:block;text-align:center;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff !important;font-size:0.78rem;font-weight:700;padding:10px;border-radius:10px;text-decoration:none !important;letter-spacing:0.02em;transition:all 0.2s;box-shadow:0 4px 16px rgba(37,99,235,0.35);margin-top:2px;}
+.vp-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,99,235,0.5);}
+
+/* ===== MOBILE TOP TICKER ===== */
+.value-ticker-wrap{display:none;position:fixed;top:var(--nav-h,64px);left:0;right:0;z-index:48;background:rgba(5,9,20,0.96);border-bottom:1px solid rgba(59,130,246,0.18);overflow:hidden;height:34px;align-items:center;}
+.value-ticker{display:inline-flex;align-items:center;white-space:nowrap;animation:ticker-scroll 36s linear infinite;}
+@keyframes ticker-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.value-ticker .vt-item{font-size:0.7rem;color:rgba(255,255,255,0.65);padding:0 8px;font-weight:500;}
+.value-ticker .vt-sep{color:rgba(59,130,246,0.5);padding:0 2px;font-weight:700;}
+
+/* ===== MOBILE BOTTOM BAR ===== */
+.value-bottom-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:48;background:rgba(5,9,20,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(59,130,246,0.18);padding:10px 16px;align-items:center;justify-content:space-between;gap:10px;}
+.vbb-info strong{display:block;font-size:0.88rem;font-weight:700;color:#fff;}
+.vbb-info span{font-size:0.7rem;color:rgba(255,255,255,0.45);}
+.vbb-btn{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff !important;font-size:0.8rem;font-weight:700;padding:10px 18px;border-radius:10px;text-decoration:none !important;white-space:nowrap;flex-shrink:0;box-shadow:0 4px 16px rgba(37,99,235,0.4);}
+
+@media(max-width:1100px){
+  .value-panel{display:none;}
+  .value-ticker-wrap{display:flex;}
+  .value-bottom-bar{display:flex;}
+  body{padding-bottom:64px;}
+}
+
 @media print{
-  .nav,.scroll-progress,.nav__mobile,.orb,.btt,.noise{display:none !important;}
+  .nav,.scroll-progress,.nav__mobile,.orb,.btt,.noise,.value-panel,.value-ticker-wrap,.value-bottom-bar{display:none !important;}
   .reveal{opacity:1;transform:none;}
   body{background:#fff;color:#000;}
 }
@@ -235,6 +274,79 @@ animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filt
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
 <div class="scroll-progress" role="progressbar" aria-label="Page scroll progress"></div>
+
+<!-- VALUE PANEL (fixed left, desktop) -->
+<aside class="value-panel" aria-label="Course value at ₹40,000">
+  <div class="vp-header">
+    <div class="vp-eyebrow">All this for just</div>
+    <div class="vp-price"><sup>₹</sup>40,000</div>
+    <div class="vp-hook">No one else goes this deep at this price.</div>
+  </div>
+  <div class="vp-label">What you'll master</div>
+  <div class="vp-item">
+    <span class="vp-ico">⚙️</span>
+    <div class="vp-txt"><strong>DevOps Core</strong><span>Linux · AWS · Azure · Docker · K8s · CI/CD</span></div>
+  </div>
+  <div class="vp-item">
+    <span class="vp-ico">🔒</span>
+    <div class="vp-txt"><strong>DevSecOps</strong><span>Secure pipelines · IAM · Ansible Vault</span></div>
+  </div>
+  <div class="vp-item">
+    <span class="vp-ico">🧠</span>
+    <div class="vp-txt"><strong>AI Concepts</strong><span>LLMs · RAG · MCP · Vector DBs · Embeddings</span></div>
+  </div>
+  <div class="vp-item">
+    <span class="vp-ico">🚀</span>
+    <div class="vp-txt"><strong>AIOps</strong><span>AI Agents · Auto-remediation · Incident bots</span></div>
+  </div>
+  <div class="vp-divider"></div>
+  <div class="vp-label">Career support</div>
+  <div class="vp-item">
+    <span class="vp-ico">🎯</span>
+    <div class="vp-txt"><strong>1-on-1 Mock Interviews</strong></div>
+  </div>
+  <div class="vp-item">
+    <span class="vp-ico">📄</span>
+    <div class="vp-txt"><strong>Resume Building</strong></div>
+  </div>
+  <div class="vp-item">
+    <span class="vp-ico">💼</span>
+    <div class="vp-txt"><strong>LinkedIn Optimization</strong></div>
+  </div>
+  <div class="vp-item">
+    <span class="vp-ico">🏆</span>
+    <div class="vp-txt"><strong>Capstone Projects</strong></div>
+  </div>
+  <div class="vp-item">
+    <span class="vp-ico">👥</span>
+    <div class="vp-txt"><strong>Group Discussions</strong><span>with industry professionals</span></div>
+  </div>
+  <a class="vp-cta" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now &rarr;</a>
+</aside>
+
+<!-- MOBILE TICKER (scrolls below nav on small screens) -->
+<div class="value-ticker-wrap" aria-hidden="true">
+  <div class="value-ticker">
+    <span class="vt-item">⚙️ DevOps Core</span><span class="vt-sep">·</span>
+    <span class="vt-item">🔒 DevSecOps</span><span class="vt-sep">·</span>
+    <span class="vt-item">🧠 AI Concepts</span><span class="vt-sep">·</span>
+    <span class="vt-item">🚀 AIOps</span><span class="vt-sep">·</span>
+    <span class="vt-item">🎯 1-on-1 Mock Interviews</span><span class="vt-sep">·</span>
+    <span class="vt-item">📄 Resume Building</span><span class="vt-sep">·</span>
+    <span class="vt-item">💼 LinkedIn Optimization</span><span class="vt-sep">·</span>
+    <span class="vt-item">🏆 Capstone Projects</span><span class="vt-sep">·</span>
+    <span class="vt-item">👥 Group Discussions with Industry Pros</span><span class="vt-sep">·</span>
+    <span class="vt-item">⚙️ DevOps Core</span><span class="vt-sep">·</span>
+    <span class="vt-item">🔒 DevSecOps</span><span class="vt-sep">·</span>
+    <span class="vt-item">🧠 AI Concepts</span><span class="vt-sep">·</span>
+    <span class="vt-item">🚀 AIOps</span><span class="vt-sep">·</span>
+    <span class="vt-item">🎯 1-on-1 Mock Interviews</span><span class="vt-sep">·</span>
+    <span class="vt-item">📄 Resume Building</span><span class="vt-sep">·</span>
+    <span class="vt-item">💼 LinkedIn Optimization</span><span class="vt-sep">·</span>
+    <span class="vt-item">🏆 Capstone Projects</span><span class="vt-sep">·</span>
+    <span class="vt-item">👥 Group Discussions with Industry Pros</span><span class="vt-sep">·</span>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav class="nav" role="navigation" aria-label="Main navigation">
@@ -643,6 +755,15 @@ animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filt
   <div class="footer__email"><a href="mailto:community@careerbytecode.com">community@careerbytecode.com</a></div>
   <div class="footer__copy">&copy; 2025 CareerByteCode. All rights reserved.</div>
 </footer>
+
+<!-- MOBILE BOTTOM ENROLL BAR -->
+<div class="value-bottom-bar" aria-label="Enroll now">
+  <div class="vbb-info">
+    <strong>₹40,000 &middot; Everything included</strong>
+    <span>DevOps + AI + Career Support</span>
+  </div>
+  <a class="vbb-btn" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now &rarr;</a>
+</div>
 
 <button class="btt" aria-label="Back to top" title="Back to top">&#x2191;</button>
 
