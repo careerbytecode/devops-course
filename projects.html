@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="51+ real-world DevOps and AI projects you'll build at CareerByteCode - from EC2 automation to autonomous AI agents. Every project is production-grade, portfolio-ready.">
+<meta property="og:title" content="51+ Real-World Projects - CareerByteCode DevOps Course">
+<meta property="og:description" content="36 DevOps + 15 Agentic AI projects. Not demos. Not tutorials. Real enterprise challenges your future employer faces every day.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://careerbytecode.github.io/devops-course/projects.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0c1220">
+<link rel="canonical" href="https://careerbytecode.github.io/devops-course/projects.html">
+<link rel="icon" href="cbc - logo.png" type="image/png">
+<title>51+ Real-World Projects - CareerByteCode DevOps Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&family=JetBrains+Mono:wght@400;500;600;700&display=optional" rel="stylesheet">
+<link rel="stylesheet" href="shared-premium.css">
+<style>
+
+/* ===== HERO ===== */
+.proj-hero{min-height:88vh;padding:0;background:#060d1a;position:relative;overflow:hidden;}
+.proj-hero__content{position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:88vh;padding:calc(var(--nav-h) + var(--sp-8)) var(--sp-6) var(--sp-8);}
+
+.proj-hero-mesh{position:absolute;inset:-50%;width:200%;height:200%;background:
+  radial-gradient(ellipse at 15% 50%,rgba(139,92,246,0.4) 0%,transparent 50%),
+  radial-gradient(ellipse at 85% 20%,rgba(37,99,235,0.35) 0%,transparent 50%),
+  radial-gradient(ellipse at 55% 85%,rgba(14,165,233,0.28) 0%,transparent 50%),
+  radial-gradient(ellipse at 35% 30%,rgba(168,85,247,0.22) 0%,transparent 50%);
+animation:mesh-morph 22s ease-in-out infinite;pointer-events:none;z-index:0;filter:blur(50px);}
+@keyframes mesh-morph{
+  0%{transform:translate(0,0) rotate(0deg) scale(1);}
+  25%{transform:translate(4%,-3%) rotate(2deg) scale(1.04);}
+  50%{transform:translate(-3%,4%) rotate(-2deg) scale(0.97);}
+  75%{transform:translate(3%,2%) rotate(3deg) scale(1.03);}
+  100%{transform:translate(0,0) rotate(0deg) scale(1);}
+}
+
+.proj-hero-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.55;pointer-events:none;will-change:transform;}
+.proj-hero-orb--1{width:550px;height:550px;background:radial-gradient(circle,rgba(139,92,246,0.45),transparent 70%);top:-15%;left:-8%;animation:porb1 22s ease-in-out infinite;}
+.proj-hero-orb--2{width:400px;height:400px;background:radial-gradient(circle,rgba(37,99,235,0.4),transparent 70%);bottom:-8%;right:-5%;animation:porb2 28s ease-in-out infinite;}
+.proj-hero-orb--3{width:280px;height:280px;background:radial-gradient(circle,rgba(14,165,233,0.3),transparent 70%);top:50%;left:55%;animation:porb3 18s ease-in-out infinite;}
+@keyframes porb1{0%,100%{transform:translate(0,0);}50%{transform:translate(50px,30px);}}
+@keyframes porb2{0%,100%{transform:translate(0,0);}50%{transform:translate(-40px,-30px);}}
+@keyframes porb3{0%,100%{transform:translate(0,0);}50%{transform:translate(60px,-40px);}}
+
+.proj-hero__kicker{font-family:var(--font-mono);font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(139,92,246,0.9);background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25);padding:6px 18px;border-radius:var(--r-full);margin-bottom:var(--sp-4);display:inline-flex;align-items:center;gap:8px;}
+.proj-hero__kicker-dot{width:6px;height:6px;background:#a78bfa;border-radius:50%;box-shadow:0 0 8px #a78bfa;animation:kdot 2s ease-in-out infinite;}
+@keyframes kdot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.7);}}
+
+.proj-hero__title{font-size:clamp(3rem,8vw,6rem);font-weight:800;letter-spacing:-0.05em;line-height:1.0;text-align:center;margin-bottom:var(--sp-3);}
+.proj-hero__title-line{display:block;color:#e2e8f0;}
+.proj-hero__title-line--glow{
+  background:linear-gradient(90deg,#a78bfa 0%,#60a5fa 35%,#38bdf8 55%,rgba(255,255,255,0.95) 58%,#38bdf8 61%,#60a5fa 80%,#a78bfa 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 24px rgba(139,92,246,0.5));
+  animation:title-shimmer 5s ease-in-out infinite,title-glow 3s ease-in-out infinite alternate;
+}
+@keyframes title-shimmer{0%{background-position:120% 50%;}100%{background-position:-80% 50%;}}
+@keyframes title-glow{0%{filter:drop-shadow(0 0 20px rgba(139,92,246,0.4));}100%{filter:drop-shadow(0 0 40px rgba(96,165,250,0.6));}}
+
+.proj-hero__sub{font-size:clamp(1rem,2.2vw,1.3rem);color:rgba(255,255,255,0.55);max-width:640px;text-align:center;line-height:1.75;margin-bottom:var(--sp-5);}
+.proj-hero__sub strong{color:rgba(255,255,255,0.88);font-weight:600;}
+
+/* ===== VALUE PANEL (fixed left, desktop) - identical to index.html ===== */
+.value-panel{position:fixed;left:16px;top:calc(var(--nav-h,64px) + 12px);bottom:12px;z-index:50;width:252px;background:rgba(5,9,20,0.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(59,130,246,0.25);border-radius:18px;padding:0;box-shadow:0 4px 40px rgba(0,0,0,0.7),0 0 0 1px rgba(139,92,246,0.1),inset 0 1px 0 rgba(255,255,255,0.06);display:flex;flex-direction:column;}
+.value-panel::before{content:'';display:block;height:3px;background:linear-gradient(90deg,#2563eb,#0ea5e9,#8b5cf6);border-radius:18px 18px 0 0;flex-shrink:0;}
+.vp-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding:0 0 4px;scrollbar-width:thin;scrollbar-color:rgba(59,130,246,0.25) transparent;}
+.vp-scroll::-webkit-scrollbar{width:3px;}
+.vp-scroll::-webkit-scrollbar-thumb{background:rgba(59,130,246,0.3);border-radius:2px;}
+.vp-header{text-align:center;padding:12px 14px 10px;border-bottom:1px solid rgba(255,255,255,0.08);flex-shrink:0;}
+.vp-eyebrow{font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.38);font-family:var(--font-mono);margin-bottom:4px;}
+.vp-price{font-size:2rem;font-weight:800;color:#fff;letter-spacing:-0.04em;line-height:1.1;}
+.vp-price sup{font-size:1rem;font-weight:700;color:#38bdf8;vertical-align:super;line-height:0;}
+.vp-hook{font-size:0.68rem;color:rgba(255,255,255,0.48);margin-top:4px;font-style:italic;line-height:1.5;}
+.vp-label{font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#38bdf8;font-family:var(--font-mono);padding:6px 14px 2px;}
+.vp-item{display:flex;align-items:flex-start;gap:9px;padding:5px 14px;transition:background 0.15s;cursor:default;}
+.vp-item:hover{background:rgba(255,255,255,0.05);}
+.vp-ico{font-size:1rem;flex-shrink:0;margin-top:1px;line-height:1;}
+.vp-txt strong{display:block;font-size:0.84rem;font-weight:700;color:rgba(255,255,255,0.95);line-height:1.3;}
+.vp-txt span{font-size:0.7rem;color:rgba(255,255,255,0.42);line-height:1.45;}
+.vp-divider{height:1px;background:rgba(255,255,255,0.08);margin:4px 0;}
+.vp-footer{flex-shrink:0;padding:8px 14px 0;}
+.vp-cta{display:block;text-align:center;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff !important;font-size:0.84rem;font-weight:700;padding:11px;border-radius:11px;text-decoration:none !important;letter-spacing:0.03em;transition:all 0.2s;box-shadow:0 4px 20px rgba(37,99,235,0.4);}
+.vp-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,99,235,0.55);}
+
+/* ===== MOBILE TOP TICKER ===== */
+.value-ticker-wrap{display:none;position:fixed;top:var(--nav-h,64px);left:0;right:0;z-index:48;background:rgba(5,9,20,0.96);border-bottom:1px solid rgba(59,130,246,0.18);overflow:hidden;height:34px;align-items:center;}
+.value-ticker{display:inline-flex;align-items:center;white-space:nowrap;animation:ticker-scroll 36s linear infinite;}
+@keyframes ticker-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.value-ticker .vt-item{font-size:0.7rem;color:rgba(255,255,255,0.65);padding:0 8px;font-weight:500;}
+.value-ticker .vt-sep{color:rgba(59,130,246,0.5);padding:0 2px;font-weight:700;}
+
+/* ===== MOBILE BOTTOM BAR ===== */
+.value-bottom-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:48;background:rgba(5,9,20,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(59,130,246,0.18);padding:10px 16px;align-items:center;justify-content:space-between;gap:10px;}
+.vbb-info strong{display:block;font-size:0.88rem;font-weight:700;color:#fff;}
+.vbb-info span{font-size:0.7rem;color:rgba(255,255,255,0.45);}
+.vbb-btn{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff !important;font-size:0.8rem;font-weight:700;padding:10px 18px;border-radius:10px;text-decoration:none !important;white-space:nowrap;flex-shrink:0;box-shadow:0 4px 16px rgba(37,99,235,0.4);}
+
+@media(max-width:1100px){
+  .value-panel{display:none;}
+  .value-ticker-wrap{display:flex;}
+  .value-bottom-bar{display:flex;}
+  body{padding-bottom:64px;}
+}
+
+/* ===== STATS BAR ===== */
+.proj-stats{display:flex;justify-content:center;flex-wrap:wrap;gap:0;background:rgba(255,255,255,0.025);border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);}
+.proj-stat{display:flex;flex-direction:column;align-items:center;padding:var(--sp-4) var(--sp-5);flex:1;min-width:140px;border-right:1px solid rgba(255,255,255,0.07);}
+.proj-stat:last-child{border-right:none;}
+.proj-stat__num{font-size:2rem;font-weight:800;letter-spacing:-0.04em;line-height:1;}
+.proj-stat__label{font-size:0.72rem;color:var(--text-3);font-weight:500;margin-top:4px;text-align:center;}
+
+/* ===== CATEGORY SECTION ===== */
+.proj-track-header{margin-bottom:var(--sp-5);}
+.proj-track-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:var(--r-full);font-family:var(--font-mono);font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:var(--sp-2);}
+.proj-track-badge--devops{background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.25);color:var(--accent-2);}
+.proj-track-badge--ai{background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);color:#c4b5fd;}
+
+/* ===== PROJECT CATEGORY GROUPS ===== */
+.proj-category{margin-bottom:var(--sp-6);}
+.proj-cat-label{display:flex;align-items:center;gap:12px;margin-bottom:var(--sp-3);}
+.proj-cat-name{font-size:1.05rem;font-weight:800;display:flex;align-items:center;gap:8px;}
+.proj-cat-count{font-family:var(--font-mono);font-size:0.68rem;font-weight:700;padding:3px 10px;border-radius:var(--r-full);}
+.proj-cat-line{flex:1;height:1px;background:linear-gradient(90deg,currentColor,transparent);opacity:0.2;}
+
+/* AWS - amber */
+.proj-cat--aws .proj-cat-name{color:#fbbf24;}
+.proj-cat--aws .proj-cat-count{background:rgba(251,191,36,0.12);color:#fbbf24;border:1px solid rgba(251,191,36,0.25);}
+.proj-cat--aws .proj-card{border-left-color:#fbbf24;}
+.proj-cat--aws .proj-num{background:rgba(251,191,36,0.12);color:#fbbf24;}
+
+/* Azure - blue */
+.proj-cat--azure .proj-cat-name{color:#60a5fa;}
+.proj-cat--azure .proj-cat-count{background:rgba(96,165,250,0.12);color:#60a5fa;border:1px solid rgba(96,165,250,0.25);}
+.proj-cat--azure .proj-card{border-left-color:#60a5fa;}
+.proj-cat--azure .proj-num{background:rgba(96,165,250,0.12);color:#60a5fa;}
+
+/* CI/CD - cyan */
+.proj-cat--cicd .proj-cat-name{color:#22d3ee;}
+.proj-cat--cicd .proj-cat-count{background:rgba(34,211,238,0.12);color:#22d3ee;border:1px solid rgba(34,211,238,0.25);}
+.proj-cat--cicd .proj-card{border-left-color:#22d3ee;}
+.proj-cat--cicd .proj-num{background:rgba(34,211,238,0.12);color:#22d3ee;}
+
+/* Kubernetes - indigo */
+.proj-cat--k8s .proj-cat-name{color:#818cf8;}
+.proj-cat--k8s .proj-cat-count{background:rgba(129,140,248,0.12);color:#818cf8;border:1px solid rgba(129,140,248,0.25);}
+.proj-cat--k8s .proj-card{border-left-color:#818cf8;}
+.proj-cat--k8s .proj-num{background:rgba(129,140,248,0.12);color:#818cf8;}
+
+/* Ansible - rose */
+.proj-cat--ansible .proj-cat-name{color:#fb7185;}
+.proj-cat--ansible .proj-cat-count{background:rgba(251,113,133,0.12);color:#fb7185;border:1px solid rgba(251,113,133,0.25);}
+.proj-cat--ansible .proj-card{border-left-color:#fb7185;}
+.proj-cat--ansible .proj-num{background:rgba(251,113,133,0.12);color:#fb7185;}
+
+/* ===== INDIVIDUAL PROJECT CARDS ===== */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--sp-2);}
+.proj-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-left-width:3px;border-radius:var(--r-md);padding:var(--sp-2) var(--sp-3);display:flex;align-items:flex-start;gap:10px;transition:all 0.2s;cursor:default;}
+.proj-card:hover{background:rgba(255,255,255,0.06);transform:translateX(4px);box-shadow:0 4px 20px rgba(0,0,0,0.2);}
+.proj-num{font-family:var(--font-mono);font-size:0.65rem;font-weight:700;min-width:28px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.proj-title{font-size:0.85rem;font-weight:600;color:rgba(255,255,255,0.85);line-height:1.5;}
+.proj-card:hover .proj-title{color:#fff;}
+
+/* ===== AI PROJECTS SECTION ===== */
+.ai-track-section{background:linear-gradient(180deg,#060d1a 0%,#09071a 40%,#0d0a1f 100%);position:relative;overflow:hidden;padding:var(--sp-10) 0;}
+.ai-section-orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;opacity:0.3;}
+.ai-section-orb--1{width:500px;height:500px;background:#6d28d9;top:-10%;left:-5%;}
+.ai-section-orb--2{width:400px;height:400px;background:#2563eb;bottom:-10%;right:-5%;}
+.ai-section-orb--3{width:300px;height:300px;background:#4f46e5;top:40%;left:45%;}
+
+.ai-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:var(--sp-3);}
+.ai-card{background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.18);border-radius:var(--r-lg);padding:var(--sp-3) var(--sp-4);position:relative;overflow:hidden;transition:all 0.25s;cursor:default;}
+.ai-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,92,246,0.08),transparent 60%);pointer-events:none;}
+.ai-card:hover{background:rgba(139,92,246,0.1);border-color:rgba(139,92,246,0.35);transform:translateY(-3px);box-shadow:0 8px 32px rgba(139,92,246,0.18);}
+.ai-card__top{display:flex;align-items:center;gap:8px;margin-bottom:var(--sp-2);}
+.ai-type{font-family:var(--font-mono);font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:var(--r-full);}
+.ai-type--agentic{background:rgba(139,92,246,0.2);color:#c4b5fd;border:1px solid rgba(139,92,246,0.3);}
+.ai-type--multi{background:rgba(14,165,233,0.15);color:#7dd3fc;border:1px solid rgba(14,165,233,0.3);}
+.ai-card__num{font-family:var(--font-mono);font-size:0.65rem;color:rgba(255,255,255,0.25);margin-left:auto;}
+.ai-card__domain{font-size:0.72rem;color:rgba(255,255,255,0.38);margin-bottom:6px;font-weight:500;}
+.ai-card__title{font-size:0.92rem;font-weight:700;color:rgba(255,255,255,0.9);line-height:1.55;}
+.ai-card:hover .ai-card__title{color:#fff;}
+
+/* ===== TRUST THE PROCESS SECTION ===== */
+.trust-section{background:linear-gradient(135deg,#060d1a 0%,#0d1a35 50%,#060d1a 100%);position:relative;overflow:hidden;padding:var(--sp-10) var(--sp-6);text-align:center;}
+.trust-orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:0.2;pointer-events:none;}
+.trust-orb-1{width:450px;height:450px;background:#2563eb;top:-20%;left:-10%;}
+.trust-orb-2{width:350px;height:350px;background:#8b5cf6;bottom:-20%;right:-10%;}
+
+.trust-counter-wrap{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:var(--sp-5);}
+.trust-counter{font-size:clamp(7rem,20vw,14rem);font-weight:800;letter-spacing:-0.06em;line-height:0.85;
+  background:linear-gradient(135deg,#60a5fa 0%,#a78bfa 40%,#38bdf8 70%,#60a5fa 100%);
+  background-size:200% 200%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:counter-shimmer 6s ease-in-out infinite;}
+@keyframes counter-shimmer{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+.trust-counter-plus{font-size:clamp(3rem,8vw,6rem);font-weight:800;background:inherit;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.trust-counter-label{font-family:var(--font-mono);font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:var(--sp-1);}
+
+.trust-heading{font-size:clamp(1.8rem,4.5vw,3.2rem);font-weight:800;color:#fff;line-height:1.2;max-width:720px;margin:0 auto var(--sp-3);}
+.trust-heading .accent{background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.trust-body{font-size:clamp(1rem,2vw,1.2rem);color:rgba(255,255,255,0.55);max-width:560px;margin:0 auto var(--sp-5);line-height:1.75;}
+.trust-body strong{color:rgba(255,255,255,0.85);}
+
+.trust-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:var(--sp-6);}
+.trust-pill{font-size:0.82rem;font-weight:600;padding:8px 20px;border-radius:var(--r-full);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);transition:all 0.2s;}
+.trust-pill:hover{background:rgba(255,255,255,0.09);color:#fff;}
+.trust-pill--star{background:rgba(251,191,36,0.08);border-color:rgba(251,191,36,0.2);color:#fbbf24;}
+.trust-pill--star:hover{background:rgba(251,191,36,0.14);color:#fde68a;}
+
+/* ===== ENROLL SECTION ===== */
+.enroll-section{background:linear-gradient(135deg,#0a1628 0%,#0d2147 50%,#0f2d6e 100%);color:#fff;position:relative;overflow:hidden;padding:var(--sp-10) var(--sp-6);}
+.enroll-section h2{color:#fff;}
+.enroll-section h2 span{background:linear-gradient(135deg,var(--accent-2),#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.enroll-section p{color:rgba(255,255,255,0.6);}
+.cta-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;opacity:0.25;}
+.cta-orb-1{width:350px;height:350px;background:#2563eb;top:-15%;left:-8%;}
+.cta-orb-2{width:280px;height:280px;background:#06b6d4;bottom:-15%;right:-8%;}
+.cta-checklist{display:flex;flex-wrap:wrap;gap:var(--sp-3);justify-content:center;margin:var(--sp-4) 0;}
+.cta-check-item{display:flex;align-items:center;gap:8px;font-size:0.88rem;color:rgba(255,255,255,0.8);font-weight:500;}
+.cta-check-item .chk{color:#34d399;font-weight:700;}
+.cta-note-sm{font-size:0.77rem;color:rgba(255,255,255,0.38);margin-top:var(--sp-2);}
+
+/* ===== BTN EXTRAS ===== */
+.btn--glow{box-shadow:0 0 20px rgba(37,99,235,0.4),0 4px 20px rgba(37,99,235,0.3);}
+.btn--glow:hover{box-shadow:0 0 30px rgba(37,99,235,0.5),0 8px 30px rgba(37,99,235,0.4);}
+.btn--whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 4px 16px rgba(37,211,102,0.3);border:none;}
+.btn--whatsapp:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,0.45);}
+
+@media(max-width:640px){
+  .proj-hero__title{font-size:clamp(2.4rem,10vw,4rem);}
+  .ai-grid{grid-template-columns:1fr;}
+  .proj-grid{grid-template-columns:1fr;}
+  .proj-stat{min-width:100px;padding:var(--sp-3) var(--sp-2);}
+  .proj-stat__num{font-size:1.5rem;}
+}
+
+@media print{
+  .nav,.scroll-progress,.nav__mobile,.orb,.btt,.noise,.value-panel,.value-ticker-wrap,.value-bottom-bar{display:none !important;}
+  .reveal{opacity:1;transform:none;}
+  body{background:#fff;color:#000;}
+}
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="scroll-progress" role="progressbar" aria-label="Page scroll progress"></div>
+
+<!-- VALUE PANEL (fixed left, desktop) -->
+<aside class="value-panel" aria-label="Course value at &#8377;40,000">
+  <div class="vp-header">
+    <div class="vp-eyebrow">All this for just</div>
+    <div class="vp-price"><sup>&#8377;</sup>40,000</div>
+    <div class="vp-hook">No one else goes this deep at this price.</div>
+  </div>
+  <div class="vp-scroll">
+    <div class="vp-label">What you'll master</div>
+    <div class="vp-item">
+      <span class="vp-ico">&#9881;&#65039;</span>
+      <div class="vp-txt"><strong>DevOps Core</strong><span>Linux &middot; AWS &middot; Azure &middot; Docker &middot; K8s &middot; CI/CD</span></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">&#128274;</span>
+      <div class="vp-txt"><strong>DevSecOps</strong><span>Secure pipelines &middot; IAM &middot; Ansible Vault</span></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">&#129504;</span>
+      <div class="vp-txt"><strong>AI Concepts</strong><span>LLMs &middot; RAG &middot; MCP &middot; Vector DBs &middot; Embeddings</span></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">&#128640;</span>
+      <div class="vp-txt"><strong>AIOps</strong><span>AI Agents &middot; Auto-remediation &middot; Incident bots</span></div>
+    </div>
+    <div class="vp-divider"></div>
+    <div class="vp-label">Career support</div>
+    <div class="vp-item">
+      <span class="vp-ico">&#127919;</span>
+      <div class="vp-txt"><strong>1-on-1 Mock Interviews</strong></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">&#128196;</span>
+      <div class="vp-txt"><strong>Resume Building</strong></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">&#128188;</span>
+      <div class="vp-txt"><strong>LinkedIn Optimization</strong></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">&#127942;</span>
+      <div class="vp-txt"><strong>Capstone Projects</strong></div>
+    </div>
+    <div class="vp-item">
+      <span class="vp-ico">&#128101;</span>
+      <div class="vp-txt"><strong>Group Discussions</strong><span>with industry professionals</span></div>
+    </div>
+  </div>
+  <div class="vp-footer">
+    <a class="vp-cta" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now &rarr;</a>
+  </div>
+</aside>
+
+<!-- MOBILE TICKER -->
+<div class="value-ticker-wrap" aria-hidden="true">
+  <div class="value-ticker">
+    <span class="vt-item">&#9881;&#65039; DevOps Core</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#128274; DevSecOps</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#129504; AI Concepts</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#128640; AIOps</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#127919; 1-on-1 Mock Interviews</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#128196; Resume Building</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#128188; LinkedIn Optimization</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#127942; Capstone Projects</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#128101; Group Discussions with Industry Pros</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#9881;&#65039; DevOps Core</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#128274; DevSecOps</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#129504; AI Concepts</span><span class="vt-sep">&middot;</span>
+    <span class="vt-item">&#128640; AIOps</span><span class="vt-sep">&middot;</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a class="nav__logo" href="index.html" aria-label="CareerByteCode home">
+    <img src="cbc - logo.png" alt="CBC" class="nav__logo-icon" width="36" height="36">
+    <span class="nav__logo-text">Career<em>ByteCode</em></span>
+  </a>
+  <div class="nav__links">
+    <a href="index.html">Home</a>
+    <a href="syllabus.html">Syllabus</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="index.html#instructors">Instructors</a>
+    <a href="index.html#pricing">Pricing</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"></button>
+    <a class="nav__cta" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now</a>
+  </div>
+  <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav__mobile" role="navigation" aria-label="Mobile navigation">
+  <a href="index.html">Home</a>
+  <a href="syllabus.html">Syllabus</a>
+  <a href="projects.html" class="active">Projects</a>
+  <a href="index.html#instructors">Instructors</a>
+  <a href="index.html#pricing">Pricing</a>
+  <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle dark mode" style="margin-top:12px;"></button>
+  <a class="nav__cta" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer" style="display:inline-flex;margin-top:12px;">Enroll Now</a>
+</div>
+
+<main>
+
+<!-- ==================== HERO ==================== -->
+<section class="proj-hero" id="hero">
+  <div class="proj-hero-mesh"></div>
+  <div class="proj-hero-orb proj-hero-orb--1"></div>
+  <div class="proj-hero-orb proj-hero-orb--2"></div>
+  <div class="proj-hero-orb proj-hero-orb--3"></div>
+  <div class="proj-hero__content">
+    <div class="proj-hero__kicker reveal">
+      <span class="proj-hero__kicker-dot"></span>
+      51+ Real-World Projects &middot; Portfolio-Ready &middot; Industry-Grade
+    </div>
+    <h1 class="proj-hero__title reveal">
+      <span class="proj-hero__title-line">Build. Break. Fix.</span>
+      <span class="proj-hero__title-line proj-hero__title-line--glow">Ship. Repeat.</span>
+    </h1>
+    <p class="proj-hero__sub reveal">
+      These aren't toy projects or <strong>"hello world" tutorials</strong>.<br>
+      These are the <strong>exact enterprise challenges</strong> your future employer is dealing with right now - and you'll have <strong>solved them before you're hired</strong>.
+    </p>
+    <div class="hero__actions reveal" style="justify-content:center;">
+      <a class="btn btn--primary btn--lg btn--magnetic btn--glow" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now &rarr;</a>
+      <a class="btn btn--outline btn--lg btn--magnetic" href="syllabus.html">View Syllabus</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== STATS ==================== -->
+<div class="proj-stats" role="region" aria-label="Project statistics">
+  <div class="proj-stat">
+    <div class="proj-stat__num" style="color:#fbbf24;"><span data-count-to="36">-</span></div>
+    <div class="proj-stat__label">DevOps Projects</div>
+  </div>
+  <div class="proj-stat">
+    <div class="proj-stat__num" style="color:#a78bfa;"><span data-count-to="15">-</span></div>
+    <div class="proj-stat__label">AI Agentic Projects</div>
+  </div>
+  <div class="proj-stat">
+    <div class="proj-stat__num" style="color:#22d3ee;"><span data-count-to="5">-</span></div>
+    <div class="proj-stat__label">Cloud Platforms</div>
+  </div>
+  <div class="proj-stat">
+    <div class="proj-stat__num" style="color:#34d399;">100<span style="font-size:1.2rem;">+</span></div>
+    <div class="proj-stat__label">More Available</div>
+  </div>
+</div>
+
+<!-- ==================== DEVOPS TRACK ==================== -->
+<section class="section" id="devops-projects">
+<div class="container">
+  <div class="proj-track-header reveal">
+    <div class="proj-track-badge proj-track-badge--devops">&#9881;&#65039; DevOps Track - 36 Projects</div>
+    <h2>Production-Grade <span class="text-gradient">DevOps Projects</span></h2>
+    <p style="max-width:640px;">Every project mirrors real infrastructure challenges - the kind that get asked about in interviews and happen in production at 2am. You'll have lived them before your first day on the job.</p>
+  </div>
+
+  <!-- AWS -->
+  <div class="proj-category proj-cat--aws reveal">
+    <div class="proj-cat-label">
+      <span class="proj-cat-name">&#9728;&#65039; AWS</span>
+      <span class="proj-cat-count">7 Projects</span>
+      <span class="proj-cat-line"></span>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <span class="proj-num">01</span>
+        <span class="proj-title">Real-Time EC2 Monitoring and Alerts Using CloudWatch</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">02</span>
+        <span class="proj-title">Setting Up VPC Peering for Inter-Region Communication</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">03</span>
+        <span class="proj-title">Scheduling EC2 Instance Start/Stop Using CloudWatch Events</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">04</span>
+        <span class="proj-title">Automating AWS EC2 Instance Start Scheduling - Manual and Terraform Approach</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">05</span>
+        <span class="proj-title">Manually and Automatically Create Snapshots of AWS EC2 Volumes Using Terraform</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">06</span>
+        <span class="proj-title">Never Forget to Turn Off EC2 Again! Smart Scheduling with AWS CloudWatch and Terraform Automation</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">07</span>
+        <span class="proj-title">Deploying a Personal Portfolio Using Amazon S3 Static Hosting</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AZURE -->
+  <div class="proj-category proj-cat--azure reveal">
+    <div class="proj-cat-label">
+      <span class="proj-cat-name">&#9729;&#65039; Azure</span>
+      <span class="proj-cat-count">11 Projects</span>
+      <span class="proj-cat-line"></span>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <span class="proj-num">08</span>
+        <span class="proj-title">Azure VNet to VNet Peering Across Multiple Regions</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">09</span>
+        <span class="proj-title">Azure Container Registry - Prepare Custom Docker Image</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">10</span>
+        <span class="proj-title">Mastering Docker CI/CD: Automate Azure Container Registry Updates with Azure DevOps Pipelines</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">11</span>
+        <span class="proj-title">Azure Key Vault to Store and Manage Secrets, Keys, and Certificates</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">12</span>
+        <span class="proj-title">Azure Blob Storage for Raw Data File Storage and Configuring Data Access Policies</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">13</span>
+        <span class="proj-title">Jenkins Pipelines with Declarative Syntax</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">14</span>
+        <span class="proj-title">Secrets Safe, 3-Tier Deployments Fast: Terraform + Azure Key Vault Complete Hands-On</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">15</span>
+        <span class="proj-title">Compliance-First Architecture: Implementing Azure Private Endpoints for Storage</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">16</span>
+        <span class="proj-title">No More Hardcoded Secrets: Azure Key Vault + AKS Kubernetes Done Right</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">17</span>
+        <span class="proj-title">Secure CI/CD Pipeline with Trivy, SonarQube, and Azure DevOps</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">18</span>
+        <span class="proj-title">Seamless Azure Virtual Machine Login Using Microsoft Entra ID Integration</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CI/CD & DEVOPS -->
+  <div class="proj-category proj-cat--cicd reveal">
+    <div class="proj-cat-label">
+      <span class="proj-cat-name">&#128295; CI/CD &amp; DevOps</span>
+      <span class="proj-cat-count">10 Projects</span>
+      <span class="proj-cat-line"></span>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <span class="proj-num">19</span>
+        <span class="proj-title">Azure DevOps CI/CD Pipeline Hands-On Deep Dive</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">20</span>
+        <span class="proj-title">Mastering .NET Microservices Deployment on Azure with Terraform and Azure DevOps</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">21</span>
+        <span class="proj-title">Mastering Azure DevOps: Automate and Streamline Multi-Environment Deployments with Release Pipelines</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">22</span>
+        <span class="proj-title">Securing Azure WebApps DevSecOps: Automating Node.js Deployments with Trivy and GitHub Actions</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">23</span>
+        <span class="proj-title">Seamless .NET Deployment: Building CI/CD Pipelines with Azure DevOps Starter</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">24</span>
+        <span class="proj-title">Create a CI/CD Pipeline to Compile, Test, and Deploy a .NET Application to Azure App Service</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">25</span>
+        <span class="proj-title">Seamless CI/CD: Integrating Jenkins with Azure Pipelines</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">26</span>
+        <span class="proj-title">Jenkins Pipeline with SonarQube Integration, Publishing Artifacts to Nexus</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">27</span>
+        <span class="proj-title">Automate Everything: Install DevOps Tools (Java, Maven, Trivy, Docker, Jenkins) on Linux with Ansible</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">28</span>
+        <span class="proj-title">How to Build an End-to-End CI/CD Pipeline Using Azure DevOps, Docker, and AKS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- KUBERNETES -->
+  <div class="proj-category proj-cat--k8s reveal">
+    <div class="proj-cat-label">
+      <span class="proj-cat-name">&#9741; Kubernetes</span>
+      <span class="proj-cat-count">6 Projects</span>
+      <span class="proj-cat-line"></span>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <span class="proj-num">29</span>
+        <span class="proj-title">Unraveling Stateful Applications in Kubernetes Using StatefulSets</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">30</span>
+        <span class="proj-title">Horizontally or Vertically? Decoding Kubernetes Pod Autoscaling Strategies</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">31</span>
+        <span class="proj-title">Affinity and Anti-Affinity: Balancing Pod Scheduling in Kubernetes</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">32</span>
+        <span class="proj-title">Seamless Updates with Kubernetes Deployment Strategies: Rolling Updates, Canary, and Blue-Green</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">33</span>
+        <span class="proj-title">Kubernetes Rolling Updates for Backend Services: Ensure 24/7 Availability During Deployments</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">34</span>
+        <span class="proj-title">Securely Hosting Multiple Applications on Kubernetes Using NGINX Ingress and Let's Encrypt TLS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANSIBLE -->
+  <div class="proj-category proj-cat--ansible reveal">
+    <div class="proj-cat-label">
+      <span class="proj-cat-name">&#128295; Ansible</span>
+      <span class="proj-cat-count">2 Projects</span>
+      <span class="proj-cat-line"></span>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <span class="proj-num">35</span>
+        <span class="proj-title">Ansible Implement Log Rotation and Archival Using Playbooks</span>
+      </div>
+      <div class="proj-card">
+        <span class="proj-num">36</span>
+        <span class="proj-title">Ansible - Manage Cron Jobs and Scheduled Tasks</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ==================== AI TRACK ==================== -->
+<section class="ai-track-section" id="ai-projects">
+  <div class="ai-section-orb ai-section-orb--1"></div>
+  <div class="ai-section-orb ai-section-orb--2"></div>
+  <div class="ai-section-orb ai-section-orb--3"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="proj-track-header reveal" style="text-align:center;margin-bottom:var(--sp-6);">
+      <div class="proj-track-badge proj-track-badge--ai" style="margin:0 auto var(--sp-2);">&#129504; AI for DevOps Track - 15 Projects</div>
+      <h2>Not Chatbots. <span style="background:linear-gradient(90deg,#a78bfa,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Autonomous AI Agents.</span></h2>
+      <p style="max-width:600px;margin:0 auto;">These agents don't answer questions - they deploy, monitor, heal, secure, and optimize your infrastructure on their own. This is the future. You'll build it from scratch.</p>
+    </div>
+
+    <div class="ai-grid">
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--agentic">Agentic AI</span>
+          <span class="ai-card__num">#AI-01</span>
+        </div>
+        <div class="ai-card__domain">CI/CD &amp; Release Engineering</div>
+        <div class="ai-card__title">Autonomous AI Software Delivery Agent (ADA)</div>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--multi">Multi-Agent</span>
+          <span class="ai-card__num">#AI-02</span>
+        </div>
+        <div class="ai-card__domain">Platform Engineering &amp; IDP</div>
+        <div class="ai-card__title">Multi-Agent Platform Engineering Assistant (MPEA)</div>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--agentic">Agentic AI</span>
+          <span class="ai-card__num">#AI-03</span>
+        </div>
+        <div class="ai-card__domain">SRE &amp; Incident Management</div>
+        <div class="ai-card__title">Agentic SRE: Autonomous Site Reliability Engineering System</div>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--agentic">Agentic AI</span>
+          <span class="ai-card__num">#AI-04</span>
+        </div>
+        <div class="ai-card__domain">DevSecOps &amp; Threat Intelligence</div>
+        <div class="ai-card__title">Autonomous Security Threat Hunting &amp; Response Agent</div>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--agentic">Agentic AI</span>
+          <span class="ai-card__num">#AI-05</span>
+        </div>
+        <div class="ai-card__domain">FinOps &amp; Cloud Optimization</div>
+        <div class="ai-card__title">AI FinOps Agent: Autonomous Cloud Cost Governance</div>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--agentic">Agentic AI</span>
+          <span class="ai-card__num">#AI-06</span>
+        </div>
+        <div class="ai-card__domain">Infrastructure Automation</div>
+        <div class="ai-card__title">Self-Healing Infrastructure Agent (SHIA)</div>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--multi">Multi-Agent</span>
+          <span class="ai-card__num">#AI-07</span>
+        </div>
+        <div class="ai-card__domain">Compliance &amp; Governance</div>
+        <div class="ai-card__title">Multi-Agent Compliance &amp; Audit Automation System (MCAAS)</div>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--agentic">Agentic AI</span>
+          <span class="ai-card__num">#AI-08</span>
+        </div>
+        <div class="ai-card__domain">Database Reliability Engineering</div>
+        <div class="ai-card__title">Autonomous Database Intelligence &amp; Evolution Agent</div>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--agentic">Agentic AI</span>
+          <span class="ai-card__num">#AI-09</span>
+        </div>
+        <div class="ai-card__domain">Resilience &amp; Chaos Engineering</div>
+        <div class="ai-card__title">AI-Native Chaos Engineering &amp; Resilience Agent</div>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--agentic">Agentic AI</span>
+          <span class="ai-card__num">#AI-10</span>
+        </div>
+        <div class="ai-card__domain">Observability &amp; AIOps</div>
+        <div class="ai-card__title">Agentic Observability Copilot with Causal Reasoning</div>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--multi">Multi-Agent</span>
+          <span class="ai-card__num">#AI-11</span>
+        </div>
+        <div class="ai-card__domain">Developer Productivity &amp; Platform Engineering</div>
+        <div class="ai-card__title">Multi-Agent Developer Experience (DevEx) Intelligence System</div>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--agentic">Agentic AI</span>
+          <span class="ai-card__num">#AI-12</span>
+        </div>
+        <div class="ai-card__domain">MLOps &amp; AI System Reliability</div>
+        <div class="ai-card__title">Autonomous AI Model Operations Agent (AIOps for ML)</div>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--agentic">Agentic AI</span>
+          <span class="ai-card__num">#AI-13</span>
+        </div>
+        <div class="ai-card__domain">Software Supply Chain Security</div>
+        <div class="ai-card__title">Autonomous Supply Chain Security &amp; SBOM Agent</div>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--multi">Multi-Agent</span>
+          <span class="ai-card__num">#AI-14</span>
+        </div>
+        <div class="ai-card__domain">GitOps &amp; Release Engineering</div>
+        <div class="ai-card__title">Multi-Agent GitOps &amp; Progressive Delivery Intelligence Network</div>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-card__top">
+          <span class="ai-type ai-type--agentic">Agentic AI</span>
+          <span class="ai-card__num">#AI-15</span>
+        </div>
+        <div class="ai-card__domain">Developer Enablement &amp; Knowledge Management</div>
+        <div class="ai-card__title">Autonomous DevOps Knowledge &amp; Onboarding Agent</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TRUST THE PROCESS ==================== -->
+<section class="trust-section reveal" id="more-projects">
+  <div class="trust-orb trust-orb-1"></div>
+  <div class="trust-orb trust-orb-2"></div>
+  <div class="trust-counter-wrap">
+    <div class="trust-counter"><span data-count-to="100">0</span><span class="trust-counter-plus">+</span></div>
+    <div class="trust-counter-label">Projects in the Pipeline</div>
+  </div>
+  <h2 class="trust-heading reveal">
+    You just saw 51.<br>
+    We <span class="accent">stopped counting at 100.</span>
+  </h2>
+  <p class="trust-body reveal">
+    The 51 projects above are just <strong>what we show you upfront</strong>. As you progress, learn the tools, and ask for more - we deliver. Every week, new challenges. Every month, new complexity. <strong>We don't run out of problems to solve</strong> - and neither will your career.
+  </p>
+  <div class="trust-pills reveal">
+    <span class="trust-pill trust-pill--star">&#11088; Learn the fundamentals first</span>
+    <span class="trust-pill">&#128293; Build something real every week</span>
+    <span class="trust-pill">&#128170; Ask for harder challenges - we'll deliver</span>
+    <span class="trust-pill trust-pill--star">&#127919; Your portfolio = your job offer</span>
+    <span class="trust-pill">&#128640; Stay curious, stay consistent</span>
+  </div>
+  <div class="hero__actions reveal" style="justify-content:center;">
+    <a class="btn btn--primary btn--lg btn--magnetic btn--glow" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Start Building &rarr;</a>
+    <a class="btn btn--whatsapp btn--lg btn--magnetic" href="https://chat.whatsapp.com/LZcOu7p3NWRAW7ZuimtTPn" target="_blank" rel="noopener noreferrer">&#128172;&nbsp; Join WhatsApp Group</a>
+  </div>
+</section>
+
+<!-- ==================== ENROLL CTA ==================== -->
+<section class="enroll-section reveal" id="enroll">
+  <div class="cta-orb cta-orb-1"></div>
+  <div class="cta-orb cta-orb-2"></div>
+  <div class="container" style="text-align:center;">
+    <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,2.8rem);">51 Projects. 90 Days.<br><span>One Career-Defining Decision.</span></h2>
+    <p class="reveal" style="max-width:580px;margin:var(--sp-2) auto 0;">Stop watching tutorials. Start shipping projects. Enroll now and work on real infrastructure challenges that make hiring managers sit up and take notice.</p>
+    <div class="cta-checklist reveal">
+      <div class="cta-check-item"><span class="chk">&#10003;</span> 51+ Real-World Projects</div>
+      <div class="cta-check-item"><span class="chk">&#10003;</span> Expert Mentorship</div>
+      <div class="cta-check-item"><span class="chk">&#10003;</span> AI for DevOps Track</div>
+      <div class="cta-check-item"><span class="chk">&#10003;</span> Career Support</div>
+    </div>
+    <div class="hero__actions reveal" style="justify-content:center;">
+      <a class="btn btn--primary btn--lg btn--magnetic btn--glow" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now &rarr;</a>
+      <a class="btn btn--whatsapp btn--lg btn--magnetic" href="https://chat.whatsapp.com/LZcOu7p3NWRAW7ZuimtTPn" target="_blank" rel="noopener noreferrer">&#128172;&nbsp; Join WhatsApp Group</a>
+    </div>
+    <p class="cta-note-sm reveal">Batch starting 25 May 2026 &middot; &#8377;40,000 &middot; Limited seats available</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="footer__title">We don't just teach tech - <em>we create leaders</em></div>
+  <div class="footer__sub">CareerByteCode &middot; Master DevOps with AI Automation &middot; Batch: 25 May 2026</div>
+  <div class="footer__links">
+    <a href="index.html">Home</a>
+    <a href="syllabus.html">Syllabus</a>
+    <a href="projects.html">Projects</a>
+    <a href="https://www.linkedin.com/company/careerbytecode" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://github.com/careerbytecode" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://youtube.com/@CareerByteCode" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://chat.whatsapp.com/LZcOu7p3NWRAW7ZuimtTPn" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </div>
+  <div class="footer__email"><a href="mailto:community@careerbytecode.com">community@careerbytecode.com</a></div>
+  <div class="footer__copy">&copy; 2025 CareerByteCode. All rights reserved.</div>
+</footer>
+
+<!-- MOBILE BOTTOM ENROLL BAR -->
+<div class="value-bottom-bar" aria-label="Enroll now">
+  <div class="vbb-info">
+    <strong>&#8377;40,000 &middot; Everything included</strong>
+    <span>DevOps + AI + Career Support</span>
+  </div>
+  <a class="vbb-btn" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now &rarr;</a>
+</div>
+
+<button class="btt" aria-label="Back to top" title="Back to top">&#x2191;</button>
+
+<script src="shared-premium.js" defer></script>
+</body>
+</html>
