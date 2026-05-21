@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Master DevOps with AI Automation — CareerByteCode. A hands-on, mentor-led 153-day program covering Linux, AWS, Azure, Docker, Kubernetes, Terraform, CI/CD, and AI for DevOps. Next batch: 25 May 2026.">
+<meta property="og:title" content="Master DevOps with AI Automation — CareerByteCode">
+<meta property="og:description" content="Go from developer to DevOps professional with AI automation. Hands-on projects, expert mentorship, 153-day program. Next batch: 25 May 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://careerbytecode.github.io/devops-course/">
+<meta property="og:image" content="https://careerbytecode.github.io/devops-course/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0c1220">
+<link rel="canonical" href="https://careerbytecode.github.io/devops-course/">
+<link rel="icon" href="cbc - logo.png" type="image/png">
+<title>Master DevOps with AI Automation — CareerByteCode</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&family=JetBrains+Mono:wght@400;500;600;700&display=optional" rel="stylesheet">
+<link rel="stylesheet" href="shared-premium.css">
+<style>
+/* ===== HERO ===== */
+.home-hero{min-height:100vh;padding:0;background:#060d1a;position:relative;overflow:hidden;}
+.home-hero .hero__grid{opacity:0.3;background-size:60px 60px;}
+.home-hero .hero__content{position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:calc(var(--nav-h) + var(--sp-8)) var(--sp-6) var(--sp-8);}
+
+.hero-mesh{position:absolute;inset:-50%;width:200%;height:200%;background:
+  radial-gradient(ellipse at 20% 50%,rgba(37,99,235,0.35) 0%,transparent 50%),
+  radial-gradient(ellipse at 80% 20%,rgba(14,165,233,0.3) 0%,transparent 50%),
+  radial-gradient(ellipse at 60% 80%,rgba(139,92,246,0.25) 0%,transparent 50%),
+  radial-gradient(ellipse at 40% 30%,rgba(6,182,212,0.2) 0%,transparent 50%);
+animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filter:blur(40px);}
+@keyframes mesh-morph{
+  0%{transform:translate(0,0) rotate(0deg) scale(1);}
+  25%{transform:translate(5%,-3%) rotate(3deg) scale(1.05);}
+  50%{transform:translate(-3%,5%) rotate(-2deg) scale(0.98);}
+  75%{transform:translate(4%,2%) rotate(4deg) scale(1.03);}
+  100%{transform:translate(0,0) rotate(0deg) scale(1);}
+}
+
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,0.15),transparent 70%);pointer-events:none;z-index:1;opacity:0;transition:opacity 0.4s;filter:blur(60px);transform:translate(-50%,-50%);will-change:left,top;}
+.home-hero:hover .hero-glow{opacity:1;}
+
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.5;pointer-events:none;will-change:transform;}
+.hero-orb--1{width:500px;height:500px;background:radial-gradient(circle,rgba(37,99,235,0.4),transparent 70%);top:-10%;left:-5%;animation:orb-float-1 20s ease-in-out infinite;}
+.hero-orb--2{width:400px;height:400px;background:radial-gradient(circle,rgba(14,165,233,0.35),transparent 70%);bottom:-5%;right:-5%;animation:orb-float-2 25s ease-in-out infinite;}
+.hero-orb--3{width:300px;height:300px;background:radial-gradient(circle,rgba(139,92,246,0.3),transparent 70%);top:40%;left:50%;animation:orb-float-3 18s ease-in-out infinite;}
+@keyframes orb-float-1{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(60px,40px) scale(1.1);}66%{transform:translate(-30px,60px) scale(0.95);}}
+@keyframes orb-float-2{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(-50px,-30px) scale(1.05);}66%{transform:translate(40px,-50px) scale(0.9);}}
+@keyframes orb-float-3{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(80px,-40px) scale(1.15);}}
+
+.hero-streaks{position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden;}
+.hero-streaks span{position:absolute;width:1.5px;border-radius:1px;opacity:0;animation:streak-rise linear infinite;}
+.hero-streaks span:nth-child(1){left:3%;height:35px;background:linear-gradient(to top,transparent,rgba(96,165,250,0.6),transparent);animation-duration:7s;animation-delay:0s;}
+.hero-streaks span:nth-child(2){left:10%;height:22px;background:linear-gradient(to top,transparent,rgba(6,182,212,0.5),transparent);animation-duration:10.5s;animation-delay:1.2s;}
+.hero-streaks span:nth-child(3){left:18%;height:40px;background:linear-gradient(to top,transparent,rgba(139,92,246,0.5),transparent);animation-duration:8s;animation-delay:3s;}
+.hero-streaks span:nth-child(4){left:25%;height:28px;background:linear-gradient(to top,transparent,rgba(56,189,248,0.55),transparent);animation-duration:9s;animation-delay:0.5s;}
+.hero-streaks span:nth-child(5){left:33%;height:18px;background:linear-gradient(to top,transparent,rgba(96,165,250,0.45),transparent);animation-duration:11s;animation-delay:4.5s;}
+.hero-streaks span:nth-child(6){left:40%;height:45px;background:linear-gradient(to top,transparent,rgba(139,92,246,0.4),transparent);animation-duration:7.5s;animation-delay:2s;}
+.hero-streaks span:nth-child(7){left:48%;height:30px;background:linear-gradient(to top,transparent,rgba(6,182,212,0.5),transparent);animation-duration:9.5s;animation-delay:0.8s;}
+.hero-streaks span:nth-child(8){left:55%;height:20px;background:linear-gradient(to top,transparent,rgba(56,189,248,0.45),transparent);animation-duration:12s;animation-delay:3.5s;}
+.hero-streaks span:nth-child(9){left:62%;height:38px;background:linear-gradient(to top,transparent,rgba(96,165,250,0.55),transparent);animation-duration:6.5s;animation-delay:1.8s;}
+.hero-streaks span:nth-child(10){left:70%;height:25px;background:linear-gradient(to top,transparent,rgba(139,92,246,0.5),transparent);animation-duration:10s;animation-delay:4s;}
+.hero-streaks span:nth-child(11){left:76%;height:42px;background:linear-gradient(to top,transparent,rgba(6,182,212,0.45),transparent);animation-duration:8.5s;animation-delay:0.3s;}
+.hero-streaks span:nth-child(12){left:82%;height:20px;background:linear-gradient(to top,transparent,rgba(56,189,248,0.5),transparent);animation-duration:11.5s;animation-delay:2.8s;}
+.hero-streaks span:nth-child(13){left:88%;height:33px;background:linear-gradient(to top,transparent,rgba(96,165,250,0.4),transparent);animation-duration:7.8s;animation-delay:1.5s;}
+.hero-streaks span:nth-child(14){left:93%;height:27px;background:linear-gradient(to top,transparent,rgba(139,92,246,0.45),transparent);animation-duration:9.2s;animation-delay:3.8s;}
+.hero-streaks span:nth-child(15){left:97%;height:36px;background:linear-gradient(to top,transparent,rgba(6,182,212,0.5),transparent);animation-duration:6.8s;animation-delay:2.2s;}
+@keyframes streak-rise{
+  0%{bottom:-10%;opacity:0;transform:translateX(0) scaleY(0.5);}
+  8%{opacity:0.8;transform:translateX(0) scaleY(1);}
+  85%{opacity:0.7;transform:translateX(15px) scaleY(1);}
+  100%{bottom:110%;opacity:0;transform:translateX(25px) scaleY(0.6);}
+}
+
+.hero__title{font-size:clamp(2.8rem,7.5vw,5.5rem);font-weight:800;letter-spacing:-0.04em;line-height:1.05;margin-bottom:var(--sp-2);text-align:center;}
+.hero-glow-text{color:#e2e8f0;text-shadow:0 0 40px rgba(226,232,240,0.1);display:block;}
+.hero-glow-text--accent{
+  background:linear-gradient(90deg,#60a5fa 0%,#38bdf8 30%,#06b6d4 50%,rgba(255,255,255,0.95) 52%,#06b6d4 54%,#38bdf8 70%,#60a5fa 100%);
+  background-size:200% 100%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 20px rgba(56,189,248,0.4));
+  animation:glow-pulse 3s ease-in-out infinite alternate,text-shimmer 4s ease-in-out infinite;
+}
+@keyframes glow-pulse{0%{filter:drop-shadow(0 0 20px rgba(56,189,248,0.3));}100%{filter:drop-shadow(0 0 40px rgba(56,189,248,0.6));}}
+@keyframes text-shimmer{0%{background-position:100% 50%;}100%{background-position:-100% 50%;}}
+
+.hero__tagline{font-size:clamp(0.9rem,2vw,1.25rem);color:rgba(255,255,255,0.5);font-weight:300;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:var(--sp-5);}
+.hero__tagline--typed{overflow:hidden;white-space:nowrap;border-right:2px solid rgba(96,165,250,0.7);width:0;animation:typing 2.5s steps(30,end) 0.8s forwards,blink-caret 0.75s step-end infinite;}
+@keyframes typing{from{width:0;}to{width:100%;}}
+@keyframes blink-caret{from,to{border-color:rgba(96,165,250,0.7);}50%{border-color:transparent;}}
+
+.home-hero .hero__badge{background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.25);color:#93c5fd;margin-bottom:var(--sp-4);}
+.hero-pulse{width:6px;height:6px;border-radius:50%;background:#34d399;box-shadow:0 0 10px #34d399;display:inline-block;animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+
+.hero-glass-card{background:rgba(255,255,255,0.04);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5);max-width:660px;margin:0 auto var(--sp-5);color:rgba(255,255,255,0.7);font-size:0.95rem;line-height:1.8;box-shadow:0 8px 32px rgba(0,0,0,0.2),inset 0 1px 0 rgba(255,255,255,0.05);}
+.hero-glass-card strong{color:#e2e8f0;font-weight:600;}
+
+.btn--glass{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+.btn--glass:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.2);color:#fff;box-shadow:0 4px 20px rgba(255,255,255,0.08);}
+.btn--glow{box-shadow:0 0 20px rgba(37,99,235,0.4),0 4px 20px rgba(37,99,235,0.3);}
+.btn--glow:hover{box-shadow:0 0 30px rgba(37,99,235,0.5),0 8px 30px rgba(37,99,235,0.4);}
+.btn--whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 4px 16px rgba(37,211,102,0.3);border:none;}
+.btn--whatsapp:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,0.45);}
+
+.scroll-hint{position:absolute;bottom:var(--sp-4);left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;animation:scroll-bounce 2s ease-in-out infinite;z-index:5;}
+.scroll-hint span{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-weight:500;}
+.scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,rgba(96,165,250,0.6),transparent);}
+@keyframes scroll-bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(10px);}}
+
+@media(max-width:640px){
+  .hero__title{font-size:clamp(2rem,9vw,3rem);}
+  .hero-glass-card{padding:var(--sp-3);font-size:0.88rem;}
+  .hero-orb--1{width:300px;height:300px;}
+  .hero-orb--2{width:250px;height:250px;}
+  .hero-orb--3{width:200px;height:200px;}
+  .hero__tagline--typed{white-space:normal;width:auto;border-right:none;animation:none;}
+  .hero-glow{display:none;}
+  .hero-mesh{filter:blur(60px);}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-mesh,.hero-orb,.hero-streaks span{animation:none !important;}
+  .hero__tagline--typed{width:auto;border-right:none;animation:none;}
+  .hero-glow-text--accent{animation:none;}
+}
+
+/* ===== PROBLEM / SOLUTION ===== */
+.prob-sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);}
+@media(max-width:768px){.prob-sol-grid{grid-template-columns:1fr;}}
+.prob-card{border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5);}
+.prob-card--problem{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);}
+.prob-card--solution{background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.15);}
+.prob-card__title{font-size:1.05rem;font-weight:700;margin-bottom:var(--sp-3);display:flex;align-items:center;gap:8px;}
+.prob-card--problem .prob-card__title{color:#f87171;}
+.prob-card--solution .prob-card__title{color:#34d399;}
+.prob-list{list-style:none;display:flex;flex-direction:column;gap:var(--sp-2);}
+.prob-list li{display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.6;}
+.prob-list li .icon{flex-shrink:0;margin-top:1px;}
+
+/* ===== FEATURES GRID ===== */
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-3);}
+@media(max-width:640px){.features-grid{grid-template-columns:1fr;}}
+
+/* ===== AUDIENCE GRID ===== */
+.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3);}
+@media(max-width:900px){.audience-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.audience-grid{grid-template-columns:1fr;}}
+
+/* ===== TECH STACK ===== */
+.tech-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--r-lg);padding:var(--sp-4);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+.tc-row{display:flex;align-items:baseline;gap:var(--sp-2);padding:var(--sp-1) 0;border-bottom:1px solid var(--border);}
+.tc-row:last-child{border-bottom:none;}
+.tc-cat{font-weight:700;font-size:0.82rem;min-width:165px;color:var(--text);}
+.tc-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.ttag{font-family:var(--font-mono);font-size:0.74rem;padding:4px 12px;border-radius:var(--r-sm);background:var(--accent-light);color:var(--accent);font-weight:500;border:1px solid transparent;transition:all 0.25s ease;cursor:default;}
+.ttag:hover{border-color:var(--accent);transform:scale(1.08);box-shadow:0 0 16px rgba(37,99,235,0.3);}
+.ttag--cyan{background:var(--accent-2-light);color:var(--accent-2);}
+.ttag--cyan:hover{border-color:var(--accent-2);}
+.ttag--purple{background:var(--accent-3-light);color:var(--accent-3);}
+.ttag--purple:hover{border-color:var(--accent-3);}
+.ttag--green{background:var(--success-light);color:var(--success);}
+.ttag--green:hover{border-color:var(--success);}
+.ttag--rose{background:var(--rose-light);color:var(--rose);}
+.ttag--rose:hover{border-color:var(--rose);}
+.ttag--gold{background:var(--warning-light);color:var(--gold);}
+.ttag--gold:hover{border-color:var(--gold);}
+@media(max-width:560px){.tc-row{flex-direction:column;gap:6px;}.tc-cat{min-width:auto;}}
+
+/* ===== LEARNING JOURNEY ===== */
+.journey-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-3);position:relative;}
+.journey-connector{position:absolute;top:28px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent-3),var(--success));opacity:0.3;z-index:0;pointer-events:none;}
+@media(max-width:768px){.journey-grid{grid-template-columns:repeat(2,1fr);}.journey-connector{display:none;}}
+@media(max-width:480px){.journey-grid{grid-template-columns:1fr;}}
+.journey-step{text-align:center;position:relative;z-index:1;}
+.journey-step__num{width:56px;height:56px;border-radius:var(--r-full);background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;color:#fff;margin:0 auto var(--sp-2);box-shadow:0 4px 16px rgba(37,99,235,0.35);}
+.journey-step:nth-child(2) .journey-step__num{background:linear-gradient(135deg,var(--accent-2),var(--accent-3));}
+.journey-step:nth-child(3) .journey-step__num{background:linear-gradient(135deg,var(--accent-3),var(--rose));}
+.journey-step:nth-child(4) .journey-step__num{background:linear-gradient(135deg,var(--success),var(--accent-2));}
+.journey-step__label{font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--accent-2);margin-bottom:4px;font-family:var(--font-mono);}
+.journey-step__title{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:6px;}
+.journey-step__desc{font-size:0.8rem;color:var(--text-2);line-height:1.6;}
+
+/* ===== INSTRUCTORS ===== */
+.instructors-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-4);max-width:820px;margin:0 auto;}
+@media(max-width:640px){.instructors-grid{grid-template-columns:1fr;}}
+
+/* ===== BACKED BY ===== */
+.backed-grid{display:flex;align-items:center;justify-content:center;gap:var(--sp-5);flex-wrap:wrap;margin-top:var(--sp-4);}
+.backed-item{font-size:0.9rem;font-weight:700;color:var(--text-2);letter-spacing:0.05em;opacity:0.7;transition:opacity 0.2s;}
+.backed-item:hover{opacity:1;}
+.backed-sep{color:var(--border-2);font-size:1.2rem;}
+
+/* ===== PRICING ===== */
+.pricing-wrap{max-width:580px;margin:0 auto;}
+.pricing-card{background:linear-gradient(135deg,#0a1628 0%,#0d2147 60%,#0f2d6e 100%);border:1px solid rgba(96,165,250,0.2);border-radius:var(--r-xl);padding:var(--sp-6) var(--sp-5);text-align:center;position:relative;overflow:hidden;box-shadow:0 0 80px rgba(37,99,235,0.12),0 20px 60px rgba(0,0,0,0.3);}
+.pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent-3));}
+.pricing-orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;}
+.pricing-orb-1{width:220px;height:220px;background:rgba(37,99,235,0.18);top:-15%;left:-8%;opacity:1;}
+.pricing-orb-2{width:180px;height:180px;background:rgba(14,165,233,0.15);bottom:-15%;right:-8%;opacity:1;}
+.pricing-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.25);color:#34d399;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:6px 18px;border-radius:var(--r-full);margin-bottom:var(--sp-3);}
+.pricing-price{font-size:clamp(3.5rem,10vw,5.5rem);font-weight:800;color:#fff;letter-spacing:-0.04em;line-height:1;position:relative;z-index:1;}
+.pricing-currency{font-size:2rem;font-weight:600;color:var(--accent-2);vertical-align:super;line-height:0;}
+.pricing-label{font-size:0.82rem;color:rgba(255,255,255,0.4);margin-top:6px;margin-bottom:var(--sp-4);position:relative;z-index:1;}
+.pricing-batch{display:inline-flex;align-items:center;gap:8px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.25);color:#fbbf24;font-size:0.82rem;font-weight:600;padding:10px 22px;border-radius:var(--r-full);margin-bottom:var(--sp-5);}
+.pricing-includes{display:flex;flex-direction:column;gap:10px;margin-bottom:var(--sp-5);text-align:left;position:relative;z-index:1;}
+.pricing-item{display:flex;align-items:center;gap:10px;font-size:0.88rem;color:rgba(255,255,255,0.78);}
+.pricing-item .pi-check{color:#34d399;font-size:1rem;flex-shrink:0;font-weight:700;}
+.pricing-note{font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:var(--sp-2);}
+
+/* ===== ENROLL SECTION ===== */
+.enroll-section{background:linear-gradient(135deg,#0a1628 0%,#0d2147 50%,#0f2d6e 100%);color:#fff;position:relative;overflow:hidden;padding:var(--sp-10) var(--sp-6);}
+.enroll-section h2{color:#fff;}
+.enroll-section h2 span{background:linear-gradient(135deg,var(--accent-2),#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.enroll-section p{color:rgba(255,255,255,0.6);}
+.cta-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;opacity:0.25;}
+.cta-orb-1{width:350px;height:350px;background:#2563eb;top:-15%;left:-8%;}
+.cta-orb-2{width:280px;height:280px;background:#06b6d4;bottom:-15%;right:-8%;}
+.cta-checklist{display:flex;flex-wrap:wrap;gap:var(--sp-3);justify-content:center;margin:var(--sp-4) 0;}
+.cta-check-item{display:flex;align-items:center;gap:8px;font-size:0.88rem;color:rgba(255,255,255,0.8);font-weight:500;}
+.cta-check-item .chk{color:#34d399;font-weight:700;}
+.cta-note-sm{font-size:0.77rem;color:rgba(255,255,255,0.38);margin-top:var(--sp-2);}
+
+@media print{
+  .nav,.scroll-progress,.nav__mobile,.orb,.btt,.noise{display:none !important;}
+  .reveal{opacity:1;transform:none;}
+  body{background:#fff;color:#000;}
+}
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="scroll-progress" role="progressbar" aria-label="Page scroll progress"></div>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a class="nav__logo" href="index.html" aria-label="CareerByteCode home">
+    <img src="cbc - logo.png" alt="CBC" class="nav__logo-icon" width="36" height="36">
+    <span class="nav__logo-text">Career<em>ByteCode</em></span>
+  </a>
+  <div class="nav__links">
+    <a href="index.html" class="active">Home</a>
+    <a href="syllabus.html">Syllabus</a>
+    <a href="#instructors">Instructors</a>
+    <a href="#pricing">Pricing</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"></button>
+    <a class="nav__cta" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now</a>
+  </div>
+  <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav__mobile" role="navigation" aria-label="Mobile navigation">
+  <a href="index.html" class="active">Home</a>
+  <a href="syllabus.html">Syllabus</a>
+  <a href="#instructors">Instructors</a>
+  <a href="#pricing">Pricing</a>
+  <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle dark mode" style="margin-top:12px;"></button>
+  <a class="nav__cta" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer" style="display:inline-flex;margin-top:12px;">Enroll Now</a>
+</div>
+
+<main>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero home-hero" id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero__grid"></div>
+  <div class="hero-glow" id="hero-glow"></div>
+  <div class="hero-orb hero-orb--1"></div>
+  <div class="hero-orb hero-orb--2"></div>
+  <div class="hero-orb hero-orb--3"></div>
+  <div class="hero-streaks">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero__content" data-parallax="0.15">
+    <div class="hero__badge reveal"><span class="hero-pulse"></span>&nbsp; Next Batch: 25 May 2026 &middot; Limited Seats</div>
+    <h1 class="hero__title reveal">
+      <span class="hero-glow-text">Master DevOps</span>
+      <span class="hero-glow-text hero-glow-text--accent">with AI Automation</span>
+    </h1>
+    <p class="hero__tagline hero__tagline--typed">Learn &middot; Build &middot; Automate &middot; Deploy</p>
+    <div class="hero-glass-card reveal">
+      <p>Go from developer to DevOps professional with <strong>AI automation in weeks</strong> — hands-on projects, expert mentorship, and skills that top companies are hiring for right now. A complete <strong>153-day program</strong> validated by <strong>IBM, AWS &amp; Microsoft Azure</strong>.</p>
+    </div>
+    <div class="hero__actions reveal">
+      <a class="btn btn--primary btn--lg btn--magnetic btn--glow" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now &rarr;</a>
+      <a class="btn btn--whatsapp btn--lg btn--magnetic" href="https://chat.whatsapp.com/LZcOu7p3NWRAW7ZuimtTPn" target="_blank" rel="noopener noreferrer">&#128172; Join WhatsApp Group</a>
+      <a class="btn btn--glass btn--magnetic" href="syllabus.html">View Syllabus</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div><span>SCROLL</span></div>
+</section>
+
+<!-- ==================== STATS ==================== -->
+<div class="stats-bar stats-bar--dark reveal" role="region" aria-label="Key statistics">
+  <div class="stat">
+    <div class="stat__num"><span style="color:var(--accent-2);" data-count-to="25">&#8212;</span><span style="color:var(--accent-2);font-size:1.6rem;font-weight:800;">%</span></div>
+    <div class="stat__label">Annual Market Growth</div>
+  </div>
+  <div class="stat">
+    <div class="stat__num"><span style="color:var(--success);" data-count-to="242">&#8212;</span><span style="color:var(--success);font-size:1.6rem;font-weight:800;">K+</span></div>
+    <div class="stat__label">Active Learners</div>
+  </div>
+  <div class="stat">
+    <div class="stat__num"><span style="color:var(--gold);" data-count-to="153">&#8212;</span><span style="color:var(--gold);font-size:1.3rem;font-weight:700;"> Days</span></div>
+    <div class="stat__label">Complete Program</div>
+  </div>
+  <div class="stat">
+    <div class="stat__num"><span style="color:var(--accent-3);" data-count-to="3">&#8212;</span><span style="color:var(--accent-3);font-size:1.3rem;font-weight:700;"> Months</span></div>
+    <div class="stat__label">To Job-Ready</div>
+  </div>
+</div>
+
+<!-- ==================== PROBLEM / SOLUTION ==================== -->
+<section class="section reveal" id="why">
+<div class="container">
+  <div class="section-header">
+    <div class="section-tag">the problem &amp; our solution</div>
+    <h2>Why most DevOps courses <span class="text-gradient">fail you</span></h2>
+    <p>We built this program specifically to fix what's broken in traditional DevOps training.</p>
+  </div>
+  <div class="prob-sol-grid">
+    <div class="prob-card prob-card--problem reveal">
+      <div class="prob-card__title">&#10060;&nbsp; The Problem with Other Courses</div>
+      <ul class="prob-list">
+        <li><span class="icon">&#10006;</span> Too abstract and disconnected from daily work</li>
+        <li><span class="icon">&#10006;</span> No mentorship or personalized feedback</li>
+        <li><span class="icon">&#10006;</span> Outdated tools and irrelevant examples</li>
+        <li><span class="icon">&#10006;</span> Overloaded with theory, light on practice</li>
+        <li><span class="icon">&#10006;</span> Leaves you overwhelmed with no real-world skills</li>
+        <li><span class="icon">&#10006;</span> Zero AI integration — already behind the market</li>
+      </ul>
+    </div>
+    <div class="prob-card prob-card--solution reveal">
+      <div class="prob-card__title">&#9989;&nbsp; Our Solution</div>
+      <ul class="prob-list">
+        <li><span class="icon">&#10004;</span> Practical projects from the very first session</li>
+        <li><span class="icon">&#10004;</span> Expert mentors guiding you through real cases</li>
+        <li><span class="icon">&#10004;</span> Curriculum aligned with what companies actually need</li>
+        <li><span class="icon">&#10004;</span> Validated by IBM, AWS &amp; Microsoft Azure engineers</li>
+        <li><span class="icon">&#10004;</span> AI-powered DevOps automation built into every module</li>
+        <li><span class="icon">&#10004;</span> Interview prep + mock sessions + career support</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ==================== FEATURES ==================== -->
+<section class="section reveal" id="features">
+<div class="container">
+  <div class="section-header">
+    <div class="section-tag">what makes this unique</div>
+    <h2>Built different. Built for <span class="text-gradient">real results.</span></h2>
+  </div>
+  <div class="features-grid">
+    <div class="card card--blue reveal">
+      <div class="card__icon card__icon--blue">&#127919;</div>
+      <h4>Fully Practical</h4>
+      <p>Implement real-world solutions from Day 1 — no fluff, just skills that work. Every module includes hands-on labs and live projects you can showcase to employers.</p>
+    </div>
+    <div class="card card--purple reveal">
+      <div class="card__icon card__icon--purple">&#129309;</div>
+      <h4>Mentored, Not Alone</h4>
+      <p>Get personal guidance from active industry experts on real-world challenges. You're never stuck — mentors are available to guide you through every block and scenario.</p>
+    </div>
+    <div class="card card--green reveal">
+      <div class="card__icon card__icon--green">&#128187;</div>
+      <h4>Built for Working Devs</h4>
+      <p>Designed around your schedule so you can achieve immediate impact in your current role. Learn at your pace without disrupting your day job or commitments.</p>
+    </div>
+    <div class="card card--gold reveal">
+      <div class="card__icon card__icon--gold">&#127942;</div>
+      <h4>Trusted by Top Teams</h4>
+      <p>Enterprise teams have already upskilled and are delivering measurable results. Curriculum backed and validated by global leaders: IBM, AWS, and Microsoft Azure.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ==================== WHO IS THIS FOR ==================== -->
+<section class="section reveal" id="audience">
+<div class="container">
+  <div class="section-header">
+    <div class="section-tag">who is this for</div>
+    <h2>Is this program <span class="text-gradient">right for you?</span></h2>
+  </div>
+  <div class="audience-grid">
+    <div class="card card--blue reveal">
+      <div class="card__icon card__icon--blue">&#128104;&#8205;&#128187;</div>
+      <h4>Software Engineers</h4>
+      <p>Learn to deploy and debug with confidence, master Kubernetes, and champion a DevOps culture across your team. Go from coder to cloud-native engineer.</p>
+    </div>
+    <div class="card reveal" style="background:var(--glass);border:1px solid var(--glass-border);">
+      <div class="card__icon" style="background:var(--accent-2-light);">&#9881;&#65039;</div>
+      <h4>DevOps Engineers &amp; SREs</h4>
+      <p>Build scalable, resilient infrastructure and optimize your CI/CD workflows. Add cutting-edge AI automation to your existing DevOps expertise.</p>
+    </div>
+    <div class="card card--purple reveal">
+      <div class="card__icon card__icon--purple">&#128640;</div>
+      <h4>Technical Leaders</h4>
+      <p>Equip your teams with cutting-edge DevOps practices that drive delivery speed and quality. Lead with data, automation, and organizational impact.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ==================== TOOLS & SKILLS ==================== -->
+<section class="section reveal" id="stack">
+<div class="container">
+  <div class="section-header">
+    <div class="section-tag">tools &amp; technologies</div>
+    <h2>Industry-relevant <span class="text-gradient">tech stack</span></h2>
+    <p>The exact tools, concepts, and methodologies that modern DevOps teams use every day — no outdated content, no filler.</p>
+  </div>
+  <div class="tech-card">
+    <div class="tc-row">
+      <div class="tc-cat">&#9729;&#65039; Cloud Platforms</div>
+      <div class="tc-tags">
+        <span class="ttag">AWS</span><span class="ttag">Azure</span><span class="ttag">GCP</span>
+      </div>
+    </div>
+    <div class="tc-row">
+      <div class="tc-cat">&#9881;&#65039; CI/CD</div>
+      <div class="tc-tags">
+        <span class="ttag ttag--cyan">Azure DevOps</span><span class="ttag ttag--cyan">GitHub Actions</span><span class="ttag ttag--cyan">Jenkins</span>
+      </div>
+    </div>
+    <div class="tc-row">
+      <div class="tc-cat">&#128736;&#65039; IaC &amp; Config</div>
+      <div class="tc-tags">
+        <span class="ttag ttag--green">Terraform</span><span class="ttag ttag--green">Ansible</span><span class="ttag ttag--green">Helm</span>
+      </div>
+    </div>
+    <div class="tc-row">
+      <div class="tc-cat">&#128230; Containers &amp; K8s</div>
+      <div class="tc-tags">
+        <span class="ttag">Docker</span><span class="ttag">Kubernetes</span><span class="ttag">EKS</span><span class="ttag">AKS</span>
+      </div>
+    </div>
+    <div class="tc-row">
+      <div class="tc-cat">&#128187; Scripting</div>
+      <div class="tc-tags">
+        <span class="ttag ttag--gold">Python</span><span class="ttag ttag--gold">Bash</span><span class="ttag ttag--gold">Linux</span><span class="ttag ttag--gold">Git</span>
+      </div>
+    </div>
+    <div class="tc-row">
+      <div class="tc-cat">&#128200; Observability</div>
+      <div class="tc-tags">
+        <span class="ttag ttag--cyan">Prometheus</span><span class="ttag ttag--cyan">Grafana</span><span class="ttag ttag--cyan">Loki</span><span class="ttag ttag--cyan">Alertmanager</span>
+      </div>
+    </div>
+    <div class="tc-row">
+      <div class="tc-cat">&#129302; AI for DevOps</div>
+      <div class="tc-tags">
+        <span class="ttag ttag--purple">LLM</span><span class="ttag ttag--purple">Prompt Eng</span><span class="ttag ttag--purple">LangChain</span><span class="ttag ttag--purple">LlamaIndex</span><span class="ttag ttag--purple">RAG</span><span class="ttag ttag--purple">Embeddings</span><span class="ttag ttag--purple">Vector DB</span><span class="ttag ttag--purple">MCP</span><span class="ttag ttag--purple">AI Agents</span><span class="ttag ttag--purple">CrewAI</span><span class="ttag ttag--purple">LangGraph</span>
+      </div>
+    </div>
+    <div class="tc-row">
+      <div class="tc-cat">&#128274; Security</div>
+      <div class="tc-tags">
+        <span class="ttag ttag--rose">IAM</span><span class="ttag ttag--rose">Ansible Vault</span><span class="ttag ttag--rose">DevSecOps</span>
+      </div>
+    </div>
+  </div>
+  <p style="text-align:center;color:var(--text-3);font-size:0.78rem;margin-top:var(--sp-3);font-family:var(--font-mono);">// Curriculum validated by engineers at IBM, AWS &amp; Microsoft Azure</p>
+</div>
+</section>
+
+<!-- ==================== LEARNING JOURNEY ==================== -->
+<section class="section reveal" id="journey">
+<div class="container">
+  <div class="section-header">
+    <div class="section-tag">your learning path</div>
+    <h2>From Fundamentals to <span class="text-gradient">Mastery</span></h2>
+    <p>A structured 153-day program taking you from zero to portfolio-ready DevOps + AI professional.</p>
+  </div>
+  <div class="journey-grid">
+    <div class="journey-connector"></div>
+    <div class="journey-step reveal">
+      <div class="journey-step__num">1</div>
+      <div class="journey-step__label">Days 1–24</div>
+      <div class="journey-step__title">Cloud &amp; Linux Foundations</div>
+      <div class="journey-step__desc">Linux deep dive, AWS Top 10, Azure Top 10 — the core cloud skills every DevOps engineer must know.</div>
+    </div>
+    <div class="journey-step reveal">
+      <div class="journey-step__num">2</div>
+      <div class="journey-step__label">Days 25–63</div>
+      <div class="journey-step__title">CI/CD, Containers &amp; IaC</div>
+      <div class="journey-step__desc">Azure DevOps, Jenkins, GitHub Actions, Docker, Kubernetes, Terraform &amp; Ansible — end-to-end pipelines.</div>
+    </div>
+    <div class="journey-step reveal">
+      <div class="journey-step__num">3</div>
+      <div class="journey-step__label">Days 64–94</div>
+      <div class="journey-step__title">Automation, Monitoring &amp; Projects</div>
+      <div class="journey-step__desc">Bash &amp; Python scripting, Prometheus + Grafana, 5 live enterprise projects, and real interview prep.</div>
+    </div>
+    <div class="journey-step reveal">
+      <div class="journey-step__num">4</div>
+      <div class="journey-step__label">Days 95–153</div>
+      <div class="journey-step__title">AI for DevOps</div>
+      <div class="journey-step__desc">LLMs, Prompt Engineering, RAG, Vector DBs, MCP, AI Agents — the future of DevOps automation.</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:var(--sp-6);" class="reveal">
+    <a class="btn btn--outline btn--lg btn--magnetic" href="syllabus.html">View Full 153-Day Syllabus &rarr;</a>
+  </div>
+</div>
+</section>
+
+<!-- ==================== INSTRUCTORS ==================== -->
+<section class="section reveal" id="instructors">
+<div class="container">
+  <div class="section-header">
+    <div class="section-tag">your instructors</div>
+    <h2>Learn from <span class="text-gradient">industry practitioners</span></h2>
+    <p>Not just teachers — active professionals solving real DevOps problems every day at the enterprise level.</p>
+  </div>
+  <div class="instructors-grid">
+    <div class="card card--person reveal">
+      <img class="card__photo" src="sonali-kurade.jpg" alt="Sonali Kurade" loading="lazy">
+      <div class="card__body">
+        <h3>Sonali Kurade</h3>
+        <div class="card__role" style="color:var(--accent-2);">Sr. DevOps Coach &amp; Co-Founder, CBC</div>
+        <div class="card__location">Pune, India</div>
+        <p class="card__bio">Senior DevOps Coach and CareerByteCode Co-Founder helping engineers evolve into confident tech leaders through peer-driven, hands-on learning and real-world mentorship at scale.</p>
+        <a class="btn-linkedin" href="https://www.linkedin.com/in/techopsbysonali/" target="_blank" rel="noopener noreferrer" aria-label="Sonali Kurade LinkedIn">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="card card--person reveal">
+      <img class="card__photo" src="saurabh.jpg" alt="Saurabh Bhoyar" loading="lazy">
+      <div class="card__body">
+        <h3>Saurabh Bhoyar</h3>
+        <div class="card__role" style="color:var(--accent-2);">DevOps Consultant, CareerByteCode</div>
+        <div class="card__location">India</div>
+        <p class="card__bio">Active industry practitioner solving real-world DevOps problems daily. Brings enterprise-grade experience in CI/CD, Kubernetes, cloud architecture, and AI automation to every session.</p>
+        <a class="btn-linkedin" href="https://www.linkedin.com/in/sourabh-bhoyar/" target="_blank" rel="noopener noreferrer" aria-label="Saurabh Bhoyar LinkedIn">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ==================== BACKED BY ==================== -->
+<section class="section" style="padding-top:0;" id="backed">
+<div class="container">
+  <div style="text-align:center;">
+    <div class="section-tag" style="margin-bottom:var(--sp-3);">curriculum backed by</div>
+    <div class="backed-grid reveal">
+      <span class="backed-item">IBM</span>
+      <span class="backed-sep">&#183;</span>
+      <span class="backed-item">Amazon Web Services</span>
+      <span class="backed-sep">&#183;</span>
+      <span class="backed-item">Microsoft Azure</span>
+    </div>
+    <p style="color:var(--text-3);font-size:0.8rem;margin-top:var(--sp-3);">Curriculum validated by engineers from industry-leading global organizations</p>
+  </div>
+</div>
+</section>
+
+<!-- ==================== PRICING ==================== -->
+<section class="section reveal" id="pricing">
+<div class="container">
+  <div class="section-header">
+    <div class="section-tag">investment</div>
+    <h2>One price. <span class="text-gradient">Complete transformation.</span></h2>
+    <p>Everything you need to go from developer to job-ready DevOps professional — included.</p>
+  </div>
+  <div class="pricing-wrap">
+    <div class="pricing-card reveal">
+      <div class="pricing-orb pricing-orb-1"></div>
+      <div class="pricing-orb pricing-orb-2"></div>
+      <div class="pricing-badge">&#9989;&nbsp; Seats Filling Fast</div>
+      <div class="pricing-price"><span class="pricing-currency">&#8377;</span>40,000</div>
+      <div class="pricing-label">One-time investment &middot; Complete 153-day program</div>
+      <div class="pricing-batch">&#128197;&nbsp; Next Batch Starts: 25 May 2026</div>
+      <div class="pricing-includes">
+        <div class="pricing-item"><span class="pi-check">&#10003;</span> 153 Days — DevOps Track (Days 1–94) + AI Track (Days 95–153)</div>
+        <div class="pricing-item"><span class="pi-check">&#10003;</span> 10+ Real-World Live Enterprise Projects</div>
+        <div class="pricing-item"><span class="pi-check">&#10003;</span> Expert Mentorship &amp; Personalized Guidance</div>
+        <div class="pricing-item"><span class="pi-check">&#10003;</span> Industry Certifications — IBM, AWS, Microsoft Azure</div>
+        <div class="pricing-item"><span class="pi-check">&#10003;</span> Interview Prep + Mock Sessions + Scenario Q&amp;A</div>
+        <div class="pricing-item"><span class="pi-check">&#10003;</span> Career Support &amp; Job Placement Assistance</div>
+        <div class="pricing-item"><span class="pi-check">&#10003;</span> WhatsApp Community &amp; Peer Network Access</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--sp-2);">
+        <a class="btn btn--primary btn--lg btn--magnetic btn--glow" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer" style="justify-content:center;">Enroll Now &rarr;</a>
+        <a class="btn btn--whatsapp btn--magnetic" href="https://chat.whatsapp.com/LZcOu7p3NWRAW7ZuimtTPn" target="_blank" rel="noopener noreferrer" style="justify-content:center;">&#128172;&nbsp; Join WhatsApp Group</a>
+      </div>
+      <p class="pricing-note">Click Enroll Now to connect on WhatsApp and secure your seat</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ==================== ENROLL CTA ==================== -->
+<section class="enroll-section reveal" id="enroll">
+  <div class="cta-orb cta-orb-1"></div>
+  <div class="cta-orb cta-orb-2"></div>
+  <div class="container" style="text-align:center;">
+    <h2 class="reveal" style="font-size:clamp(1.8rem,4vw,2.8rem);">Ready to Master DevOps<br><span>with AI Automation?</span></h2>
+    <p class="reveal" style="max-width:580px;margin:var(--sp-2) auto 0;">Join a thriving community of engineers who have already transformed their careers. Your journey to becoming a highly sought-after DevOps professional starts with a single step.</p>
+    <div class="cta-checklist reveal">
+      <div class="cta-check-item"><span class="chk">&#10003;</span> Hands-On Projects</div>
+      <div class="cta-check-item"><span class="chk">&#10003;</span> Expert Mentorship</div>
+      <div class="cta-check-item"><span class="chk">&#10003;</span> Industry Certifications</div>
+      <div class="cta-check-item"><span class="chk">&#10003;</span> Career Support</div>
+    </div>
+    <div class="hero__actions reveal" style="justify-content:center;">
+      <a class="btn btn--primary btn--lg btn--magnetic btn--glow" href="https://wa.link/0nmn9p" target="_blank" rel="noopener noreferrer">Enroll Now &rarr;</a>
+      <a class="btn btn--whatsapp btn--lg btn--magnetic" href="https://chat.whatsapp.com/LZcOu7p3NWRAW7ZuimtTPn" target="_blank" rel="noopener noreferrer">&#128172;&nbsp; Join WhatsApp Group</a>
+    </div>
+    <p class="cta-note-sm reveal">Batch starting 25 May 2026 &middot; &#8377;40,000 &middot; Limited seats available</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="footer__title">We don't just teach tech &mdash; <em>we create leaders</em></div>
+  <div class="footer__sub">CareerByteCode &middot; Master DevOps with AI Automation &middot; Batch: 25 May 2026</div>
+  <div class="footer__links">
+    <a href="index.html">Home</a>
+    <a href="syllabus.html">Syllabus</a>
+    <a href="https://www.linkedin.com/company/careerbytecode" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://github.com/careerbytecode" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://youtube.com/@CareerByteCode" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://chat.whatsapp.com/LZcOu7p3NWRAW7ZuimtTPn" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </div>
+  <div class="footer__email"><a href="mailto:community@careerbytecode.com">community@careerbytecode.com</a></div>
+  <div class="footer__copy">&copy; 2025 CareerByteCode. All rights reserved.</div>
+</footer>
+
+<button class="btt" aria-label="Back to top" title="Back to top">&#x2191;</button>
+
+<script src="shared-premium.js" defer></script>
+<script>
+(function(){
+  var hero = document.querySelector('.home-hero');
+  var glow = document.getElementById('hero-glow');
+  if (!hero || !glow) return;
+  hero.addEventListener('mousemove', function(e) {
+    var r = hero.getBoundingClientRect();
+    glow.style.left = (e.clientX - r.left) + 'px';
+    glow.style.top  = (e.clientY - r.top)  + 'px';
+  });
+})();
+</script>
+</body>
+</html>
