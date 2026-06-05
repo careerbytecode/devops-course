@@ -12,13 +12,16 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0c1220">
 <link rel="canonical" href="https://careerbytecode.github.io/devops-course/">
-<link rel="icon" href="cbc - logo.png" type="image/png">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <title>Master DevOps with AI Automation - CareerByteCode</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&family=JetBrains+Mono:wght@400;500;600;700&display=optional" rel="stylesheet">
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="shared-premium.css">
 <style>
+/* ===== SELF-HOSTED FONTS (Latin subset, variable axes preserved) ===== */
+@font-face{font-family:'Inter';font-style:normal;font-weight:300 800;font-display:optional;src:url('fonts/inter-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 800;font-display:optional;src:url('fonts/jetbrains-mono-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+
 /* ===== HERO ===== */
 .home-hero{min-height:100vh;padding:0;background:#060d1a;position:relative;overflow:hidden;}
 .home-hero .hero__grid{opacity:0.3;background-size:60px 60px;}
@@ -38,7 +41,7 @@ animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filt
   100%{transform:translate(0,0) rotate(0deg) scale(1);}
 }
 
-.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,0.15),transparent 70%);pointer-events:none;z-index:1;opacity:0;transition:opacity 0.4s;filter:blur(60px);transform:translate(-50%,-50%);will-change:left,top;}
+.hero-glow{position:absolute;left:0;top:0;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,0.15),transparent 70%);pointer-events:none;z-index:1;opacity:0;transition:opacity 0.4s;filter:blur(60px);transform:translate3d(0,0,0) translate(-50%,-50%);will-change:transform;}
 .home-hero:hover .hero-glow{opacity:1;}
 
 .hero-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.5;pointer-events:none;will-change:transform;}
@@ -50,7 +53,7 @@ animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filt
 @keyframes orb-float-3{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(80px,-40px) scale(1.15);}}
 
 .hero-streaks{position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden;}
-.hero-streaks span{position:absolute;width:1.5px;border-radius:1px;opacity:0;animation:streak-rise linear infinite;}
+.hero-streaks span{position:absolute;bottom:-10%;width:1.5px;border-radius:1px;opacity:0;animation:streak-rise linear infinite;}
 .hero-streaks span:nth-child(1){left:3%;height:35px;background:linear-gradient(to top,transparent,rgba(96,165,250,0.6),transparent);animation-duration:7s;animation-delay:0s;}
 .hero-streaks span:nth-child(2){left:10%;height:22px;background:linear-gradient(to top,transparent,rgba(6,182,212,0.5),transparent);animation-duration:10.5s;animation-delay:1.2s;}
 .hero-streaks span:nth-child(3){left:18%;height:40px;background:linear-gradient(to top,transparent,rgba(139,92,246,0.5),transparent);animation-duration:8s;animation-delay:3s;}
@@ -66,11 +69,12 @@ animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filt
 .hero-streaks span:nth-child(13){left:88%;height:33px;background:linear-gradient(to top,transparent,rgba(96,165,250,0.4),transparent);animation-duration:7.8s;animation-delay:1.5s;}
 .hero-streaks span:nth-child(14){left:93%;height:27px;background:linear-gradient(to top,transparent,rgba(139,92,246,0.45),transparent);animation-duration:9.2s;animation-delay:3.8s;}
 .hero-streaks span:nth-child(15){left:97%;height:36px;background:linear-gradient(to top,transparent,rgba(6,182,212,0.5),transparent);animation-duration:6.8s;animation-delay:2.2s;}
+/* Composited: travels via transform translateY (hero is ~100vh tall) instead of `bottom`. */
 @keyframes streak-rise{
-  0%{bottom:-10%;opacity:0;transform:translateX(0) scaleY(0.5);}
-  8%{opacity:0.8;transform:translateX(0) scaleY(1);}
-  85%{opacity:0.7;transform:translateX(15px) scaleY(1);}
-  100%{bottom:110%;opacity:0;transform:translateX(25px) scaleY(0.6);}
+  0%{opacity:0;transform:translateY(0) translateX(0) scaleY(0.5);}
+  8%{opacity:0.8;transform:translateY(-9.6vh) translateX(0) scaleY(1);}
+  85%{opacity:0.7;transform:translateY(-102vh) translateX(15px) scaleY(1);}
+  100%{opacity:0;transform:translateY(-120vh) translateX(25px) scaleY(0.6);}
 }
 
 .hero__title{font-size:clamp(2.8rem,7.5vw,5.5rem);font-weight:800;letter-spacing:-0.04em;line-height:1.05;margin-bottom:var(--sp-2);text-align:center;}
@@ -450,7 +454,10 @@ animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filt
 <!-- NAV -->
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <a class="nav__logo" href="index.html" aria-label="CareerByteCode home">
-    <img src="cbc - logo.png" alt="CBC" class="nav__logo-icon" width="36" height="36">
+    <picture>
+      <source srcset="cbc-logo-72.webp" type="image/webp">
+      <img src="cbc-logo-72.png" alt="CBC" class="nav__logo-icon" width="36" height="36">
+    </picture>
     <span class="nav__logo-text">Career<em>ByteCode</em></span>
   </a>
   <div class="nav__links">
@@ -733,7 +740,10 @@ animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filt
   </div>
   <div class="instructors-grid">
     <div class="card card--person reveal">
-      <img class="card__photo" src="sonali-kurade.jpg" alt="Sonali Kurade" loading="lazy">
+      <picture>
+        <source srcset="sonali-kurade-480.webp" type="image/webp">
+        <img class="card__photo" src="sonali-kurade-480.jpg" alt="Sonali Kurade" loading="lazy">
+      </picture>
       <div class="card__body">
         <h3>Sonali Kurade</h3>
         <div class="card__role" style="color:var(--accent-2);">Sr. DevOps Coach &amp; Co-Founder, CBC</div>
@@ -746,7 +756,10 @@ animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filt
       </div>
     </div>
     <div class="card card--person reveal">
-      <img class="card__photo" src="saurabh.jpg" alt="Saurabh Bhoyar" loading="lazy">
+      <picture>
+        <source srcset="saurabh-480.webp" type="image/webp">
+        <img class="card__photo" src="saurabh-480.jpg" alt="Saurabh Bhoyar" loading="lazy">
+      </picture>
       <div class="card__body">
         <h3>Saurabh Bhoyar</h3>
         <div class="card__role" style="color:var(--accent-2);">DevOps Consultant, CareerByteCode</div>
@@ -869,11 +882,17 @@ animation:mesh-morph 20s ease-in-out infinite;pointer-events:none;z-index:0;filt
   var hero = document.querySelector('.home-hero');
   var glow = document.getElementById('hero-glow');
   if (!hero || !glow) return;
+  var gx = 0, gy = 0, gRaf = null;
   hero.addEventListener('mousemove', function(e) {
     var r = hero.getBoundingClientRect();
-    glow.style.left = (e.clientX - r.left) + 'px';
-    glow.style.top  = (e.clientY - r.top)  + 'px';
-  });
+    gx = e.clientX - r.left;
+    gy = e.clientY - r.top;
+    if (gRaf !== null) return;            // composited transform, one write per frame
+    gRaf = requestAnimationFrame(function(){
+      gRaf = null;
+      glow.style.transform = 'translate3d(' + gx + 'px,' + gy + 'px,0) translate(-50%,-50%)';
+    });
+  }, {passive: true});
 })();
 </script>
 </body>
